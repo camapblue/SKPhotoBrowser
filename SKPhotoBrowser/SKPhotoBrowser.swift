@@ -131,7 +131,7 @@ open class SKPhotoBrowser: UIViewController {
         delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
 
         // toolbar
-        toolbar.frame = frameForToolbarAtOrientation()
+//        toolbar.frame = frameForToolbarAtOrientation()
         
         // action
         actionView.updateFrame(frame: view.frame)
@@ -223,6 +223,12 @@ open class SKPhotoBrowser: UIViewController {
     
     open func setScrollEnable(enable: Bool) {
         pagingScrollView.isScrollEnabled = enable
+    }
+    
+    open func supportRightToLeft() {
+        self.view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        
+        pagingScrollView.supportRightToLeft()
     }
 }
 
@@ -343,7 +349,7 @@ public extension SKPhotoBrowser {
         } else {
             activityViewController.modalPresentationStyle = .popover
             let popover: UIPopoverPresentationController! = activityViewController.popoverPresentationController
-            popover.barButtonItem = toolbar.toolActionButton
+//            popover.barButtonItem = toolbar.toolActionButton
             present(activityViewController, animated: true, completion: nil)
         }
     }
@@ -494,7 +500,7 @@ internal extension SKPhotoBrowser {
                 
                 if let popoverController = actionSheetController.popoverPresentationController {
                     popoverController.sourceView = self.view
-                    popoverController.barButtonItem = toolbar.toolActionButton
+//                    popoverController.barButtonItem = toolbar.toolActionButton
                 }
                 
                 present(actionSheetController, animated: true, completion: { () -> Void in
@@ -566,8 +572,8 @@ private extension SKPhotoBrowser {
     }
     
     func configureToolbar() {
-        toolbar = SKToolbar(frame: frameForToolbarAtOrientation(), browser: self)
-        view.addSubview(toolbar)
+//        toolbar = SKToolbar(frame: frameForToolbarAtOrientation(), browser: self)
+//        view.addSubview(toolbar)
     }
 
     func setControlsHidden(_ hidden: Bool, animated: Bool, permanent: Bool) {

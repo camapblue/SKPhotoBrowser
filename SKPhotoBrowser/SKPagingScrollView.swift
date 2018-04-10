@@ -14,6 +14,8 @@ class SKPagingScrollView: UIScrollView {
     fileprivate var visiblePages: [SKZoomingScrollView] = []
     fileprivate var recycledPages: [SKZoomingScrollView] = []
     fileprivate weak var browser: SKPhotoBrowser?
+    
+    var isRightToLeft = false
 
     var numberOfPhotos: Int {
         return browser?.photos.count ?? 0
@@ -142,6 +144,7 @@ class SKPagingScrollView: UIScrollView {
             let page: SKZoomingScrollView = SKZoomingScrollView(frame: frame, browser: browser)
             page.frame = frameForPageAtIndex(index)
             page.tag = index + pageIndexTagOffset
+            page.isRightToLeft = self.isRightToLeft
             page.photo = browser.photos[index]
             
             visiblePages.append(page)
@@ -198,6 +201,14 @@ class SKPagingScrollView: UIScrollView {
                        animations: { () -> Void in
                         captionViews.forEach { $0.alpha = alpha }
                        }, completion: nil)
+    }
+    
+    func supportRightToLeft() {
+        isRightToLeft = true
+        
+        for item in visiblePages {
+            item.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        }
     }
 }
 

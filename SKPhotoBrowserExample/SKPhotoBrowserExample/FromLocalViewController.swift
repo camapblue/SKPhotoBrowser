@@ -75,6 +75,11 @@ extension FromLocalViewController {
         
         browser = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.row)
         browser!.delegate = self
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(0.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { [weak self] in
+                    self?.browser?.supportRightToLeft()
+        })
+        
 //        browser.updateCloseButton(UIImage(named: "image1.jpg")!)
         
         present(browser!, animated: true, completion: {})

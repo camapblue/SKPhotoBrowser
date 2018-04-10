@@ -10,6 +10,7 @@ import UIKit
 
 open class SKZoomingScrollView: UIScrollView {
     var captionView: SKCaptionView!
+    var isRightToLeft = false
     var photo: SKPhotoProtocol! {
         didSet {
             imageView.image = nil
@@ -22,6 +23,10 @@ open class SKZoomingScrollView: UIScrollView {
             }
             if photo != nil {
                 displayImage(complete: false)
+            }
+            
+            if isRightToLeft {
+                self.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             }
         }
     }
