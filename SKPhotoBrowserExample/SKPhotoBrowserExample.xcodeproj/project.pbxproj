@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8E97A7207C6F0D0084B5CF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E97A6207C6F0D0084B5CF /* CustomView.swift */; };
 		212705891C92C69C00466223 /* FromCameraRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212705881C92C69C00466223 /* FromCameraRollViewController.swift */; };
 		8909B55B1BC792150060A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55A1BC792150060A053 /* AppDelegate.swift */; };
 		8909B55D1BC792150060A053 /* FromLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55C1BC792150060A053 /* FromLocalViewController.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C8E97A6207C6F0D0084B5CF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		212705881C92C69C00466223 /* FromCameraRollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromCameraRollViewController.swift; sourceTree = "<group>"; };
 		3CB7DBB2A904933FBC55D566 /* Pods-SKPhotoBrowserExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKPhotoBrowserExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKPhotoBrowserExample/Pods-SKPhotoBrowserExample.release.xcconfig"; sourceTree = "<group>"; };
 		6726ABE37DF17134C0BA8EBC /* Pods-SKPhotoBrowserExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKPhotoBrowserExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKPhotoBrowserExample/Pods-SKPhotoBrowserExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				8909B55C1BC792150060A053 /* FromLocalViewController.swift */,
 				212705881C92C69C00466223 /* FromCameraRollViewController.swift */,
 				89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */,
+				0C8E97A6207C6F0D0084B5CF /* CustomView.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8E97A7207C6F0D0084B5CF /* CustomView.swift in Sources */,
 				212705891C92C69C00466223 /* FromCameraRollViewController.swift in Sources */,
 				8909B55D1BC792150060A053 /* FromLocalViewController.swift in Sources */,
 				8909B55B1BC792150060A053 /* AppDelegate.swift in Sources */,

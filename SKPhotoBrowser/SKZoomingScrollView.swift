@@ -13,8 +13,12 @@ open class SKZoomingScrollView: UIScrollView {
     var photo: SKPhotoProtocol! {
         didSet {
             imageView.image = nil
-            if photo != nil && photo.underlyingImage != nil {
-                displayImage(complete: true)
+            if photo != nil {
+                if photo.customView != nil {
+                    displayCustomView(complete: false)
+                } else if photo.underlyingImage != nil {
+                    displayImage(complete: true)
+                }
             }
             if photo != nil {
                 displayImage(complete: false)
@@ -209,6 +213,32 @@ open class SKZoomingScrollView: UIScrollView {
 			// change contentSize will reset contentOffset, so only set the contentsize zero when the image is nil
 			contentSize = CGSize.zero
 		}
+        setNeedsLayout()
+    }
+    
+    open func displayCustomView(complete flag: Bool) {
+        // reset scale
+        maximumZoomScale = 1
+        minimumZoomScale = 1
+        zoomScale = 1
+        
+        if !flag {
+            if photo.customView == nil {
+                indicatorView.startAnimating()
+            }
+            photo.loadUnderlyingImageAndNotify()
+        } else {
+            indicatorView.stopAnimating()
+        }
+        if let view = photo.customView, let parent = imageView.superview {
+            // image
+            parent.addSubview(view)
+            
+            view.frame = parent.bounds
+        } else {
+            // change contentSize will reset contentOffset, so only set the contentsize zero when the image is nil
+            contentSize = CGSize.zero
+        }
         setNeedsLayout()
     }
     

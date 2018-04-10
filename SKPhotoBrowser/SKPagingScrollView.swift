@@ -133,7 +133,7 @@ class SKPagingScrollView: UIScrollView {
         while recycledPages.count > 2 {
             recycledPages.removeFirst()
         }
-        
+//        print("FIRST = \(firstIndex) LAST = \(lastIndex)")
         for index: Int in firstIndex...lastIndex {
             if visiblePages.filter({ $0.tag - pageIndexTagOffset == index }).count > 0 {
                 continue

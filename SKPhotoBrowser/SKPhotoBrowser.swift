@@ -166,6 +166,8 @@ open class SKPhotoBrowser: UIViewController {
             if photo.underlyingImage != nil {
                 page.displayImage(complete: true)
                 self.loadAdjacentPhotosIfNecessary(photo)
+            } else if photo.customView != nil {
+                page.displayCustomView(complete: true)
             } else {
                 page.displayImageFailure()
             }
@@ -217,6 +219,10 @@ open class SKPhotoBrowser: UIViewController {
     open func determineAndClose() {
         delegate?.willDismissAtPageIndex?(self.currentPageIndex)
         animator.willDismiss(self)
+    }
+    
+    open func setScrollEnable(enable: Bool) {
+        pagingScrollView.isScrollEnabled = enable
     }
 }
 

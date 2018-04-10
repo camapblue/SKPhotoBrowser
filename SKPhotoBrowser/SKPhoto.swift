@@ -10,7 +10,9 @@ import UIKit
 
 @objc public protocol SKPhotoProtocol: NSObjectProtocol {
     var index: Int { get set }
+    var scrollEnable: Bool { get set }
     var underlyingImage: UIImage! { get }
+    var customView: UIView? { get }
     var caption: String? { get }
     var contentMode: UIViewContentMode { get set }
     func loadUnderlyingImageAndNotify()
@@ -20,7 +22,9 @@ import UIKit
 // MARK: - SKPhoto
 open class SKPhoto: NSObject, SKPhotoProtocol {
     open var index: Int = 0
+    open var scrollEnable: Bool = true
     open var underlyingImage: UIImage!
+    open var customView: UIView?
     open var caption: String?
     open var contentMode: UIViewContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = false

@@ -9,14 +9,16 @@
 import UIKit
 import SKPhotoBrowser
 
-class FromLocalViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, SKPhotoBrowserDelegate {
+class FromLocalViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var browser: SKPhotoBrowser?
     
     var images = [SKPhotoProtocol]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Static setup
         SKPhotoBrowserOptions.displayAction = true
         SKPhotoBrowserOptions.displayStatusbar = true
@@ -31,6 +33,17 @@ class FromLocalViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    private func getCustomView() -> CustomView {
+        let view = CustomView(frame: collectionView.bounds)
+        view.backgroundColor = .green
+        
+        let subView = UIView(frame: CGRect(x: 200, y: 200, width: 200, height: 200))
+        subView.backgroundColor = .red
+        view.addSubview(subView)
+        
+        return view
     }
 }
 
@@ -56,11 +69,15 @@ extension FromLocalViewController {
 extension FromLocalViewController {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let browser = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.row)
-        browser.delegate = self
+        
+        images.append(getCustomView())
+        print("IMAGES = \(images.count)")
+        
+        browser = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.row)
+        browser!.delegate = self
 //        browser.updateCloseButton(UIImage(named: "image1.jpg")!)
         
-        present(browser, animated: true, completion: {})
+        present(browser!, animated: true, completion: {})
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -74,10 +91,16 @@ extension FromLocalViewController {
 
 // MARK: - SKPhotoBrowserDelegate
 
-extension FromLocalViewController {
+extension FromLocalViewController: SKPhotoBrowserDelegate {
     func didShowPhotoAtIndex(_ index: Int) {
+        print("WHAT THE HELL = \(index)")
         collectionView.visibleCells.forEach({$0.isHidden = false})
         collectionView.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = true
+        
+        print("DAU PHONG = \(index)")
+        if let b = self.browser {
+            b.setScrollEnable(enable: images[index].scrollEnable)
+        }
     }
     
     func willDismissAtPageIndex(_ index: Int) {

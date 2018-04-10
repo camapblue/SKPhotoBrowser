@@ -11,7 +11,9 @@ import UIKit
 // MARK: - SKLocalPhoto
 open class SKLocalPhoto: NSObject, SKPhotoProtocol {
     
+    open var scrollEnable: Bool = true
     open var underlyingImage: UIImage!
+    open var customView: UIView?
     open var photoURL: String!
     open var contentMode: UIViewContentMode = .scaleToFill
     open var shouldCachePhotoURLImage: Bool = false
