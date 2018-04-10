@@ -564,16 +564,22 @@ private extension SKPhotoBrowser {
     func configureActionView() {
         actionView = SKActionView(frame: view.frame, browser: self)
         view.addSubview(actionView)
+        
+        actionView.isHidden = true
     }
 
     func configurePaginationView() {
         paginationView = SKPaginationView(frame: view.frame, browser: self)
         view.addSubview(paginationView)
+        
+        paginationView.isHidden = true
     }
     
     func configureToolbar() {
-//        toolbar = SKToolbar(frame: frameForToolbarAtOrientation(), browser: self)
-//        view.addSubview(toolbar)
+        toolbar = SKToolbar(frame: frameForToolbarAtOrientation(), browser: self)
+        view.addSubview(toolbar)
+        
+        toolbar.isHidden = true
     }
 
     func setControlsHidden(_ hidden: Bool, animated: Bool, permanent: Bool) {
