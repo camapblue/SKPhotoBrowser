@@ -128,7 +128,7 @@ open class SKPhotoBrowser: UIViewController {
         super.viewWillLayoutSubviews()
         isPerformingLayout = true
         // where did start
-        delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
+//        delegate?.didShowPhotoAtIndex?(self, index: currentPageIndex)
 
         // toolbar
 //        toolbar.frame = frameForToolbarAtOrientation()
