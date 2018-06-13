@@ -14,6 +14,7 @@ class SKPagingScrollView: UIScrollView {
     fileprivate var visiblePages: [SKZoomingScrollView] = []
     fileprivate var recycledPages: [SKZoomingScrollView] = []
     fileprivate weak var browser: SKPhotoBrowser?
+    public var indicatorImages: [UIImage]?
     
     var isRightToLeft = false
 
@@ -29,10 +30,11 @@ class SKPagingScrollView: UIScrollView {
         super.init(frame: frame)
     }
     
-    convenience init(frame: CGRect, browser: SKPhotoBrowser) {
+    convenience init(frame: CGRect, browser: SKPhotoBrowser, indicatorImages: [UIImage]?) {
         self.init(frame: frame)
         self.browser = browser
-
+        self.indicatorImages = indicatorImages
+        
         isPagingEnabled = true
         showsHorizontalScrollIndicator = SKPhotoBrowserOptions.displayPagingHorizontalScrollIndicator
         showsVerticalScrollIndicator = true
@@ -141,7 +143,8 @@ class SKPagingScrollView: UIScrollView {
                 continue
             }
             
-            let page: SKZoomingScrollView = SKZoomingScrollView(frame: frame, browser: browser)
+            let page: SKZoomingScrollView = SKZoomingScrollView(frame: frame, browser: browser,
+                                                                indicatorImages: indicatorImages)
             page.frame = frameForPageAtIndex(index)
             page.tag = index + pageIndexTagOffset
             page.isRightToLeft = self.isRightToLeft

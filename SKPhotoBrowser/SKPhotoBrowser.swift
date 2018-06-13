@@ -16,8 +16,10 @@ open class SKPhotoBrowser: UIViewController {
     open var currentPageIndex: Int = 0
     open var activityItemProvider: UIActivityItemProvider?
     open var photos: [SKPhotoProtocol] = []
+    open var indicatorImages: [UIImage]?
     
-    internal lazy var pagingScrollView: SKPagingScrollView = SKPagingScrollView(frame: self.view.frame, browser: self)
+    internal lazy var pagingScrollView: SKPagingScrollView = SKPagingScrollView(frame: self.view.frame, browser: self,
+                                                                                indicatorImages: indicatorImages)
     
     // appearance
     fileprivate let bgColor: UIColor = SKPhotoBrowserOptions.backgroundColor
@@ -80,6 +82,16 @@ open class SKPhotoBrowser: UIViewController {
     public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
+        self.photos.forEach { $0.checkCache() }
+        self.currentPageIndex = min(initialPageIndex, photos.count - 1)
+        animator.senderOriginImage = photos[currentPageIndex].underlyingImage
+        animator.senderViewForAnimation = photos[currentPageIndex] as? UIView
+    }
+    
+    public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int, indicatorImages: [UIImage]?) {
+        self.init(nibName: nil, bundle: nil)
+        self.photos = photos
+        self.indicatorImages = indicatorImages
         self.photos.forEach { $0.checkCache() }
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
         animator.senderOriginImage = photos[currentPageIndex].underlyingImage

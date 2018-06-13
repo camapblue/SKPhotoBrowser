@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		48E3BDB920CFCB9B0077E407 /* Universal-SKPhotoBrowser */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 48E3BDBA20CFCB9B0077E407 /* Build configuration list for PBXAggregateTarget "Universal-SKPhotoBrowser" */;
+			buildPhases = (
+				48E3BDBD20CFCBA80077E407 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Universal-SKPhotoBrowser";
+			productName = "Universal-SKPhotoBrowser";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		210E53ED1C986D3A008DD5E3 /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E53EC1C986D3A008DD5E3 /* UIView+Radius.swift */; };
 		210E53EF1C986D57008DD5E3 /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E53EE1C986D57008DD5E3 /* UIImage+Rotation.swift */; };
@@ -227,6 +241,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = suzuki_keishi;
 				TargetAttributes = {
+					48E3BDB920CFCB9B0077E407 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					8909B52F1BC791280060A053 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 0900;
@@ -251,6 +269,7 @@
 			targets = (
 				8909B52F1BC791280060A053 /* SKPhotoBrowser */,
 				A64B89321CB04222000071B9 /* SKPhotoBrowserTests */,
+				48E3BDB920CFCB9B0077E407 /* Universal-SKPhotoBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -274,6 +293,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		48E3BDBD20CFCBA80077E407 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
+		};
 		898687D41C5F4BB600652FD0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +371,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		48E3BDBB20CFCB9B0077E407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		48E3BDBC20CFCB9B0077E407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		8909B5361BC791280060A053 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -517,6 +565,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		48E3BDBA20CFCB9B0077E407 /* Build configuration list for PBXAggregateTarget "Universal-SKPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E3BDBB20CFCB9B0077E407 /* Debug */,
+				48E3BDBC20CFCB9B0077E407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8909B52A1BC791280060A053 /* Build configuration list for PBXProject "SKPhotoBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

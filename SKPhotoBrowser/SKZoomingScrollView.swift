@@ -31,11 +31,14 @@ open class SKZoomingScrollView: UIScrollView {
         }
     }
     
+    public var indicatorImages: [UIImage]?
+    
     fileprivate weak var browser: SKPhotoBrowser?
     
     fileprivate(set) var imageView: SKDetectingImageView!
     fileprivate var tapView: SKDetectingView!
     fileprivate var indicatorView: SKIndicatorView!
+    fileprivate var indicatorImageView: UIImageView?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -47,9 +50,10 @@ open class SKZoomingScrollView: UIScrollView {
         setup()
     }
     
-    convenience init(frame: CGRect, browser: SKPhotoBrowser) {
+    convenience init(frame: CGRect, browser: SKPhotoBrowser, indicatorImages: [UIImage]?) {
         self.init(frame: frame)
         self.browser = browser
+        self.indicatorImages = indicatorImages
         setup()
     }
     
@@ -72,9 +76,17 @@ open class SKZoomingScrollView: UIScrollView {
         imageView.backgroundColor = .clear
         addSubview(imageView)
         
-        // indicator
-        indicatorView = SKIndicatorView(frame: frame)
-        addSubview(indicatorView)
+        // indicator || customer indicator image view
+        if let indicatorImages = indicatorImages {
+            indicatorImageView = UIImageView()
+            indicatorImageView?.frame = frame
+            indicatorImageView?.contentMode = .center
+            indicatorImageView?.animationImages = indicatorImages
+            addSubview(indicatorImageView!)
+        } else {
+            indicatorView = SKIndicatorView(frame: frame)
+            addSubview(indicatorView)
+        }
         
         // self
         backgroundColor = .clear
@@ -89,7 +101,12 @@ open class SKZoomingScrollView: UIScrollView {
     
     open override func layoutSubviews() {
         tapView.frame = bounds
-        indicatorView.frame = bounds
+        // check custom indicator
+        if let indicatorImageView = indicatorImageView {
+            indicatorImageView.frame = bounds
+        } else {
+            indicatorView.frame = bounds
+        }
         
         super.layoutSubviews()
         
@@ -189,11 +206,11 @@ open class SKZoomingScrollView: UIScrollView {
         
         if !flag {
             if photo.underlyingImage == nil {
-                indicatorView.startAnimating()
+                animationIndicator()
             }
             photo.loadUnderlyingImageAndNotify()
         } else {
-            indicatorView.stopAnimating()
+            animationIndicator(isAnimating: false)
         }
         
         if let image = photo.underlyingImage, photo != nil {
@@ -229,11 +246,11 @@ open class SKZoomingScrollView: UIScrollView {
         
         if !flag {
             if photo.customView == nil {
-                indicatorView.startAnimating()
+                animationIndicator()
             }
             photo.loadUnderlyingImageAndNotify()
         } else {
-            indicatorView.stopAnimating()
+            animationIndicator(isAnimating: false)
         }
         if let view = photo.customView, let parent = imageView.superview {
             // image
@@ -248,7 +265,7 @@ open class SKZoomingScrollView: UIScrollView {
     }
     
     open func displayImageFailure() {
-        indicatorView.stopAnimating()
+        animationIndicator(isAnimating: false)
     }
     
     // MARK: - handle tap
@@ -274,6 +291,15 @@ open class SKZoomingScrollView: UIScrollView {
         
         // delay control
         browser?.hideControlsAfterDelay()
+    }
+    
+    // MARK: - private func
+    private func animationIndicator(isAnimating animating: Bool = true) {
+        if let indicatorImageView = indicatorImageView {
+            animating ? indicatorImageView.startAnimating() : indicatorImageView.stopAnimating()
+        } else {
+            animating ? indicatorView.startAnimating() : indicatorView.stopAnimating()
+        }
     }
 }
 

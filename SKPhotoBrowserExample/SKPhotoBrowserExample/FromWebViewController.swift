@@ -27,7 +27,7 @@ class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
     }
     
     @IBAction func pushButton(_ sender: AnyObject) {
-        let browser = SKPhotoBrowser(photos: createWebPhotos())
+        let browser = SKPhotoBrowser(photos: createWebPhotos(), initialPageIndex: 0)
         browser.initializePageIndex(0)
         browser.delegate = self
         

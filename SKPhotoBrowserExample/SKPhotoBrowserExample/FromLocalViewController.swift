@@ -45,6 +45,7 @@ class FromLocalViewController: UIViewController, UICollectionViewDataSource, UIC
         
         return view
     }
+
 }
 
  // MARK: - UICollectionViewDataSource
@@ -65,14 +66,12 @@ extension FromLocalViewController {
 }
 
 // MARK: - UICollectionViewDelegate
-
 extension FromLocalViewController {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         images.append(getCustomView())
         print("IMAGES = \(images.count)")
-        
+
         browser = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.row)
         browser!.delegate = self
         DispatchQueue.main.asyncAfter(
