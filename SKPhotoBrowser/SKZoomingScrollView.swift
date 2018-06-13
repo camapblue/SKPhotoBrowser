@@ -135,7 +135,6 @@ open class SKZoomingScrollView: UIScrollView {
     open func setMaxMinZoomScalesForCurrentBounds() {
         maximumZoomScale = 1
         minimumZoomScale = 1
-//        zoomScale = 1
 
         guard let imageView = imageView else {
             return
@@ -148,8 +147,6 @@ open class SKZoomingScrollView: UIScrollView {
         let yScale = boundsSize.height / imageSize.height
         var minScale: CGFloat = min(xScale, yScale)
         var maxScale: CGFloat = 1.0
-        
-        print("Min scale: \(minScale)")
 
         let scale = max(SKMesurement.screenScale, 2.0)
         let deviceScreenWidth = UIScreen.main.bounds.width * scale // width in pixels. scale needs to remove if to use the old algorithm
@@ -174,9 +171,7 @@ open class SKZoomingScrollView: UIScrollView {
 
         maximumZoomScale = maxScale
         minimumZoomScale = minScale
-        
-        // disable start zoomScale
-//        zoomScale = minScale > 1.0 ? 1.0 : minScale
+        zoomScale = 1.0
 
         // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
         // maximum zoom scale to 0.5
@@ -206,7 +201,6 @@ open class SKZoomingScrollView: UIScrollView {
         // reset scale
         maximumZoomScale = 1
         minimumZoomScale = 1
-//        zoomScale = 1
         
         if !flag {
             if photo.underlyingImage == nil {
@@ -267,7 +261,6 @@ open class SKZoomingScrollView: UIScrollView {
         // reset scale
         maximumZoomScale = 1
         minimumZoomScale = 1
-//        zoomScale = 1
         
         if !flag {
             if photo.customView == nil {
