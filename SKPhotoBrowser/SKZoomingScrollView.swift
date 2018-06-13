@@ -72,7 +72,7 @@ open class SKZoomingScrollView: UIScrollView {
         // image
         imageView = SKDetectingImageView(frame: frame)
         imageView.delegate = self
-        imageView.contentMode = .bottom
+        imageView.contentMode = .center
         imageView.backgroundColor = .clear
         addSubview(imageView)
         
@@ -107,12 +107,12 @@ open class SKZoomingScrollView: UIScrollView {
         } else {
             indicatorView.frame = bounds
         }
-        
+
         super.layoutSubviews()
-        
+
         let boundsSize = bounds.size
         var frameToCenter = imageView.frame
-        
+
         // horizon
         if frameToCenter.size.width < boundsSize.width {
             frameToCenter.origin.x = floor((boundsSize.width - frameToCenter.size.width) / 2)
@@ -125,34 +125,34 @@ open class SKZoomingScrollView: UIScrollView {
         } else {
             frameToCenter.origin.y = 0
         }
-        
+
         // Center
         if !imageView.frame.equalTo(frameToCenter) {
             imageView.frame = frameToCenter
         }
     }
-    
+
     open func setMaxMinZoomScalesForCurrentBounds() {
         maximumZoomScale = 1
         minimumZoomScale = 1
         zoomScale = 1
-        
+
         guard let imageView = imageView else {
             return
         }
-        
+
         let boundsSize = bounds.size
         let imageSize = imageView.frame.size
-        
+
         let xScale = boundsSize.width / imageSize.width
         let yScale = boundsSize.height / imageSize.height
         var minScale: CGFloat = min(xScale, yScale)
         var maxScale: CGFloat = 1.0
-        
-        let scale = max(UIScreen.main.scale, 2.0)
+
+        let scale = max(SKMesurement.screenScale, 2.0)
         let deviceScreenWidth = UIScreen.main.bounds.width * scale // width in pixels. scale needs to remove if to use the old algorithm
         let deviceScreenHeight = UIScreen.main.bounds.height * scale // height in pixels. scale needs to remove if to use the old algorithm
-        
+
         if SKPhotoBrowserOptions.longPhotoWidthMatchScreen && imageView.frame.height >= imageView.frame.width {
             minScale = 1.0
             maxScale = 2.5
@@ -169,21 +169,23 @@ open class SKZoomingScrollView: UIScrollView {
             // here if imageView.frame.width == deviceScreenWidth
             maxScale = 2.5
         }
-    
+
         maximumZoomScale = maxScale
         minimumZoomScale = minScale
-        zoomScale = minScale
         
+        // disable start zoomScale
+        // zoomScale = minScale
+
         // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
         // maximum zoom scale to 0.5
         // After changing this value, we still never use more
         /*
-        maxScale = maxScale / scale 
+        maxScale = maxScale / scale
         if maxScale < minScale {
             maxScale = minScale * 2
         }
         */
-        
+
         // reset position
         imageView.frame.origin = CGPoint.zero
         setNeedsLayout()
@@ -216,17 +218,38 @@ open class SKZoomingScrollView: UIScrollView {
         if let image = photo.underlyingImage, photo != nil {
             // image
             imageView.image = image
-            imageView.contentMode = photo.contentMode
-
+            imageView.clipsToBounds = true
+            var isScale = false
+            
             var imageViewFrame: CGRect = .zero
             imageViewFrame.origin = .zero
-            // long photo
-            if SKPhotoBrowserOptions.longPhotoWidthMatchScreen && image.size.height >= image.size.width {
-                let imageHeight = SKMesurement.screenWidth / image.size.width * image.size.height
-                imageViewFrame.size = CGSize(width: SKMesurement.screenWidth, height: imageHeight)
-            } else {
+            
+            // check photo size
+            let photoWidth = image.size.width
+            let photoHeight = image.size.height
+        
+            // image smaller than the device screen
+            if photoWidth < SKMesurement.screenWidth && photoHeight < SKMesurement.screenHeight {
                 imageViewFrame.size = image.size
+                isScale = false
+            } else if photoWidth > SKMesurement.screenWidth && photoHeight < SKMesurement.screenHeight {
+                let screenSize = CGSize(width: SKMesurement.screenWidth, height: photoHeight)
+                imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
+                                             height: imageView.aspectFitSize(fromSize: screenSize).height)
+                isScale = true
+            } else if photoHeight > SKMesurement.screenHeight && photoWidth < SKMesurement.screenWidth {
+                let screenSize = CGSize(width: photoWidth, height: SKMesurement.screenHeight)
+                imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
+                                             height: imageView.aspectFitSize(fromSize: screenSize).height)
+                isScale = true
+            } else if photoWidth > SKMesurement.screenWidth && photoHeight > SKMesurement.screenHeight {
+                let screenSize = CGSize(width: SKMesurement.screenWidth, height: SKMesurement.screenHeight)
+                imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
+                                             height: imageView.aspectFitSize(fromSize: screenSize).height)
+                isScale = true
             }
+            
+            imageView.contentMode = isScale ? .scaleAspectFit : .center
             imageView.frame = imageViewFrame
 
             contentSize = imageViewFrame.size

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0C8E97A7207C6F0D0084B5CF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E97A6207C6F0D0084B5CF /* CustomView.swift */; };
 		212705891C92C69C00466223 /* FromCameraRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212705881C92C69C00466223 /* FromCameraRollViewController.swift */; };
+		48E3BDCB20D0DBEC0077E407 /* image9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48E3BDCA20D0DBEC0077E407 /* image9.jpg */; };
+		48E3BDD120D1155E0077E407 /* image13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48E3BDCE20D1155E0077E407 /* image13.jpg */; };
+		48E3BDD220D1155E0077E407 /* image12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48E3BDCF20D1155E0077E407 /* image12.jpg */; };
+		48E3BDD320D1155E0077E407 /* image14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48E3BDD020D1155E0077E407 /* image14.jpg */; };
+		48E3BDD520D117F20077E407 /* image15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48E3BDD420D117F10077E407 /* image15.jpg */; };
 		8909B55B1BC792150060A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55A1BC792150060A053 /* AppDelegate.swift */; };
 		8909B55D1BC792150060A053 /* FromLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55C1BC792150060A053 /* FromLocalViewController.swift */; };
 		8909B5601BC792150060A053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8909B55E1BC792150060A053 /* Main.storyboard */; };
@@ -17,7 +22,7 @@
 		8909B5811BC792DC0060A053 /* image0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5751BC792DC0060A053 /* image0.jpg */; };
 		8909B5821BC792DC0060A053 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5761BC792DC0060A053 /* image1.jpg */; };
 		8909B5831BC792DC0060A053 /* image10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5771BC792DC0060A053 /* image10.jpg */; };
-		8909B5841BC792DC0060A053 /* image12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5781BC792DC0060A053 /* image12.jpg */; };
+		8909B5841BC792DC0060A053 /* image11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5781BC792DC0060A053 /* image11.jpg */; };
 		8909B5851BC792DC0060A053 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5791BC792DC0060A053 /* image2.jpg */; };
 		8909B5861BC792DC0060A053 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57A1BC792DC0060A053 /* image3.jpg */; };
 		8909B5871BC792DC0060A053 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57B1BC792DC0060A053 /* image4.jpg */; };
@@ -25,7 +30,6 @@
 		8909B5891BC792DC0060A053 /* image6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57D1BC792DC0060A053 /* image6.jpg */; };
 		8909B58A1BC792DC0060A053 /* image7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57E1BC792DC0060A053 /* image7.jpg */; };
 		8909B58B1BC792DC0060A053 /* image8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57F1BC792DC0060A053 /* image8.jpg */; };
-		8909B58C1BC792DC0060A053 /* image9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5801BC792DC0060A053 /* image9.jpg */; };
 		89FC5DBB1D54A04900F1BE52 /* FromWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */; };
 		A6A7B7801C9578E30025AC07 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5711BC792570060A053 /* SKPhotoBrowser.framework */; };
 		A6A7B7811C9578E30025AC07 /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5711BC792570060A053 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -74,6 +78,11 @@
 		0C8E97A6207C6F0D0084B5CF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		212705881C92C69C00466223 /* FromCameraRollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromCameraRollViewController.swift; sourceTree = "<group>"; };
 		3CB7DBB2A904933FBC55D566 /* Pods-SKPhotoBrowserExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKPhotoBrowserExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKPhotoBrowserExample/Pods-SKPhotoBrowserExample.release.xcconfig"; sourceTree = "<group>"; };
+		48E3BDCA20D0DBEC0077E407 /* image9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image9.jpg; sourceTree = "<group>"; };
+		48E3BDCE20D1155E0077E407 /* image13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image13.jpg; sourceTree = "<group>"; };
+		48E3BDCF20D1155E0077E407 /* image12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image12.jpg; sourceTree = "<group>"; };
+		48E3BDD020D1155E0077E407 /* image14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image14.jpg; sourceTree = "<group>"; };
+		48E3BDD420D117F10077E407 /* image15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image15.jpg; sourceTree = "<group>"; };
 		6726ABE37DF17134C0BA8EBC /* Pods-SKPhotoBrowserExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKPhotoBrowserExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKPhotoBrowserExample/Pods-SKPhotoBrowserExample.debug.xcconfig"; sourceTree = "<group>"; };
 		7C2188E912BB106233AA4AB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8909B5571BC792150060A053 /* SKPhotoBrowserExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKPhotoBrowserExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +96,7 @@
 		8909B5751BC792DC0060A053 /* image0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image0.jpg; sourceTree = "<group>"; };
 		8909B5761BC792DC0060A053 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
 		8909B5771BC792DC0060A053 /* image10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image10.jpg; sourceTree = "<group>"; };
-		8909B5781BC792DC0060A053 /* image12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image12.jpg; sourceTree = "<group>"; };
+		8909B5781BC792DC0060A053 /* image11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image11.jpg; sourceTree = "<group>"; };
 		8909B5791BC792DC0060A053 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
 		8909B57A1BC792DC0060A053 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
 		8909B57B1BC792DC0060A053 /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpg; sourceTree = "<group>"; };
@@ -95,7 +104,6 @@
 		8909B57D1BC792DC0060A053 /* image6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpg; sourceTree = "<group>"; };
 		8909B57E1BC792DC0060A053 /* image7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image7.jpg; sourceTree = "<group>"; };
 		8909B57F1BC792DC0060A053 /* image8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image8.jpg; sourceTree = "<group>"; };
-		8909B5801BC792DC0060A053 /* image9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image9.jpg; sourceTree = "<group>"; };
 		89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromWebViewController.swift; sourceTree = "<group>"; };
 		FC185D4686B5554C11523E7C /* Pods_SKPhotoBrowserExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKPhotoBrowserExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,10 +164,12 @@
 		8909B5741BC792DC0060A053 /* SampleImages */ = {
 			isa = PBXGroup;
 			children = (
+				48E3BDD420D117F10077E407 /* image15.jpg */,
+				48E3BDCF20D1155E0077E407 /* image12.jpg */,
+				48E3BDCE20D1155E0077E407 /* image13.jpg */,
+				48E3BDD020D1155E0077E407 /* image14.jpg */,
 				8909B5751BC792DC0060A053 /* image0.jpg */,
 				8909B5761BC792DC0060A053 /* image1.jpg */,
-				8909B5771BC792DC0060A053 /* image10.jpg */,
-				8909B5781BC792DC0060A053 /* image12.jpg */,
 				8909B5791BC792DC0060A053 /* image2.jpg */,
 				8909B57A1BC792DC0060A053 /* image3.jpg */,
 				8909B57B1BC792DC0060A053 /* image4.jpg */,
@@ -167,7 +177,9 @@
 				8909B57D1BC792DC0060A053 /* image6.jpg */,
 				8909B57E1BC792DC0060A053 /* image7.jpg */,
 				8909B57F1BC792DC0060A053 /* image8.jpg */,
-				8909B5801BC792DC0060A053 /* image9.jpg */,
+				48E3BDCA20D0DBEC0077E407 /* image9.jpg */,
+				8909B5771BC792DC0060A053 /* image10.jpg */,
+				8909B5781BC792DC0060A053 /* image11.jpg */,
 			);
 			path = SampleImages;
 			sourceTree = "<group>";
@@ -315,20 +327,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				8909B58B1BC792DC0060A053 /* image8.jpg in Resources */,
+				48E3BDD120D1155E0077E407 /* image13.jpg in Resources */,
 				8909B5861BC792DC0060A053 /* image3.jpg in Resources */,
 				8909B5811BC792DC0060A053 /* image0.jpg in Resources */,
 				8909B58A1BC792DC0060A053 /* image7.jpg in Resources */,
 				8909B5821BC792DC0060A053 /* image1.jpg in Resources */,
 				8909B5831BC792DC0060A053 /* image10.jpg in Resources */,
-				8909B58C1BC792DC0060A053 /* image9.jpg in Resources */,
+				48E3BDCB20D0DBEC0077E407 /* image9.jpg in Resources */,
+				48E3BDD320D1155E0077E407 /* image14.jpg in Resources */,
+				48E3BDD520D117F20077E407 /* image15.jpg in Resources */,
 				8909B5651BC792150060A053 /* LaunchScreen.storyboard in Resources */,
 				8909B5621BC792150060A053 /* Assets.xcassets in Resources */,
 				8909B5891BC792DC0060A053 /* image6.jpg in Resources */,
 				8909B5871BC792DC0060A053 /* image4.jpg in Resources */,
 				8909B5881BC792DC0060A053 /* image5.jpg in Resources */,
-				8909B5841BC792DC0060A053 /* image12.jpg in Resources */,
+				8909B5841BC792DC0060A053 /* image11.jpg in Resources */,
 				8909B5851BC792DC0060A053 /* image2.jpg in Resources */,
 				8909B5601BC792150060A053 /* Main.storyboard in Resources */,
+				48E3BDD220D1155E0077E407 /* image12.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
