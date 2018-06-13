@@ -153,7 +153,9 @@ open class SKZoomingScrollView: UIScrollView {
         let deviceScreenWidth = UIScreen.main.bounds.width * scale // width in pixels. scale needs to remove if to use the old algorithm
         let deviceScreenHeight = UIScreen.main.bounds.height * scale // height in pixels. scale needs to remove if to use the old algorithm
 
-        if SKPhotoBrowserOptions.longPhotoWidthMatchScreen && imageView.frame.height >= imageView.frame.width {
+        if imageView.frame.width < deviceScreenWidth && imageView.frame.height < deviceScreenHeight {
+            minScale = 1.0
+        } else if SKPhotoBrowserOptions.longPhotoWidthMatchScreen && imageView.frame.height >= imageView.frame.width {
             minScale = 1.0
             maxScale = 2.5
         } else if imageView.frame.width < deviceScreenWidth {
@@ -174,7 +176,7 @@ open class SKZoomingScrollView: UIScrollView {
         minimumZoomScale = minScale
         
         // disable start zoomScale
-        // zoomScale = minScale
+         zoomScale = minScale
 
         // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
         // maximum zoom scale to 0.5

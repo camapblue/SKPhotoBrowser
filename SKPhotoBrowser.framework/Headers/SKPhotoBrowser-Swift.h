@@ -422,11 +422,6 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser19SKZoomingScrollView")
 
 
 
-@interface UIImage (SWIFT_EXTENSION(SKPhotoBrowser))
-+ (UIImage * _Nullable)gifImageWithData:(NSData * _Nonnull)data SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'UIImage.gifImageWithData(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-+ (UIImage * _Nullable)gifImageWithURL:(NSString * _Nonnull)gifUrl SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'UIImage.gifImageWithURL(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-+ (UIImage * _Nullable)gifImageWithName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'UIImage.gifImageWithName(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@end
 
 
 
