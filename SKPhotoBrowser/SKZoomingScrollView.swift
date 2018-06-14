@@ -80,7 +80,8 @@ open class SKZoomingScrollView: UIScrollView {
         if let indicatorImages = indicatorImages {
             indicatorImageView = UIImageView()
             indicatorImageView?.frame = frame
-            indicatorImageView?.contentMode = .center
+            indicatorImageView?.frame.size = SKPhotoBrowserOptions.indicatorCustomSize
+            indicatorImageView?.contentMode = .scaleAspectFit
             indicatorImageView?.animationImages = indicatorImages
             addSubview(indicatorImageView!)
         } else {
@@ -104,6 +105,8 @@ open class SKZoomingScrollView: UIScrollView {
         // check custom indicator
         if let indicatorImageView = indicatorImageView {
             indicatorImageView.frame = bounds
+            indicatorImageView.frame.size = SKPhotoBrowserOptions.indicatorCustomSize
+            indicatorImageView.center = browser?.view.center ?? center
         } else {
             indicatorView.frame = bounds
         }

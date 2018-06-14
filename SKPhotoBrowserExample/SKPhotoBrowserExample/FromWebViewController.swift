@@ -29,9 +29,15 @@ class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
     @IBAction func pushButton(_ sender: AnyObject) {
         let browser = SKPhotoBrowser(photos: createWebPhotos(), initialPageIndex: 0)
         browser.initializePageIndex(0)
+        browser.indicatorImages = loadingIndicator()
         browser.delegate = self
         
         present(browser, animated: true, completion: nil)
+    }
+    
+    // Test loading custom indicator
+    private func loadingIndicator() -> [UIImage] {
+        return (1...30).compactMap { index -> UIImage? in return UIImage(named: "icon.fullscreenImage.progress\(index)")}
     }
 }
 
@@ -56,7 +62,7 @@ private extension FromWebViewController {
     func createWebPhotos() -> [SKPhotoProtocol] {
         return (0..<10).map { (i: Int) -> SKPhotoProtocol in
 //            let photo = SKPhoto.photoWithImageURL("https://placehold.jp/150\(i)x150\(i).png", holder: UIImage(named: "image0.jpg")!)
-            let photo = SKPhoto.photoWithImageURL("https://placehold.jp/10\(i)x100\(i).png")
+            let photo = SKPhoto.photoWithImageURL("https://www.townandcountrymag.com/leisure/arts-and-culture/a9550430/lotus-flower-meaning/")
             photo.caption = caption[i%10]
             photo.shouldCachePhotoURLImage = true
             return photo

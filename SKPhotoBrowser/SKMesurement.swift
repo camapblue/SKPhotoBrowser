@@ -15,6 +15,7 @@ struct SKMesurement {
     static var statusBarH: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
+    
     static var screenHeight: CGFloat {
         return UIScreen.main.bounds.height
     }
