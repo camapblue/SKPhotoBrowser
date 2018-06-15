@@ -219,7 +219,8 @@ open class SKZoomingScrollView: UIScrollView {
         
         if let image = photo.underlyingImage, photo != nil {
             // image
-            imageView.image = image
+            imageView.fadeImage(withAnimationDuration: SKPhotoBrowserOptions.fadeAnimationDuration,
+                                andImage: image)
             imageView.clipsToBounds = true
             
             var imageViewFrame: CGRect = .zero

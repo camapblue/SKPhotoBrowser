@@ -32,6 +32,8 @@ public struct SKPhotoBrowserOptions {
     public static var indicatorColor: UIColor = .white
     public static var indicatorStyle: UIActivityIndicatorViewStyle = .whiteLarge
     public static var indicatorCustomSize: CGSize = CGSize(width: 100, height: 100)
+    
+    public static var fadeAnimationDuration: Double = 1.0
 
     /// By default close button is on left side and delete button is on right.
     ///

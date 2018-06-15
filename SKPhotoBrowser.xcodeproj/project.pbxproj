@@ -27,6 +27,7 @@
 		26C97AD71D0EB6A00039F6CB /* SKCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C97AD61D0EB6A00039F6CB /* SKCacheTests.swift */; };
 		26C97AD91D0EB8BB0039F6CB /* SKCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C97AD81D0EB8BB0039F6CB /* SKCacheable.swift */; };
 		48E3BDD920D11CC80077E407 /* UIImageView+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3BDD820D11CC80077E407 /* UIImageView+Size.swift */; };
+		48F6662620D38F16008E0A02 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6662520D38F16008E0A02 /* UIImageView.swift */; };
 		7643F4B41FE8CE7A00475F6E /* SKActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7643F4B31FE8CE7A00475F6E /* SKActionView.swift */; };
 		7643F4B61FE9F42F00475F6E /* SKPaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7643F4B51FE9F42F00475F6E /* SKPaginationView.swift */; };
 		7643F4B91FEA4FCF00475F6E /* SKToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7643F4B81FEA4FCF00475F6E /* SKToolbar.swift */; };
@@ -68,6 +69,7 @@
 		26C97AD61D0EB6A00039F6CB /* SKCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCacheTests.swift; sourceTree = "<group>"; };
 		26C97AD81D0EB8BB0039F6CB /* SKCacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCacheable.swift; sourceTree = "<group>"; };
 		48E3BDD820D11CC80077E407 /* UIImageView+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Size.swift"; sourceTree = "<group>"; };
+		48F6662520D38F16008E0A02 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		7643F4B31FE8CE7A00475F6E /* SKActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKActionView.swift; sourceTree = "<group>"; };
 		7643F4B51FE9F42F00475F6E /* SKPaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPaginationView.swift; sourceTree = "<group>"; };
 		7643F4B81FEA4FCF00475F6E /* SKToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKToolbar.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				210E53EE1C986D57008DD5E3 /* UIImage+Rotation.swift */,
 				D2265CCE1F799C75009256CC /* UIApplication+UIWindow.swift */,
 				48E3BDD820D11CC80077E407 /* UIImageView+Size.swift */,
+				48F6662520D38F16008E0A02 /* UIImageView.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				89D0BA471D5994A8002A811B /* SKAnimator.swift in Sources */,
 				210E53ED1C986D3A008DD5E3 /* UIView+Radius.swift in Sources */,
 				7643F4B61FE9F42F00475F6E /* SKPaginationView.swift in Sources */,
+				48F6662620D38F16008E0A02 /* UIImageView.swift in Sources */,
 				7643F4B41FE8CE7A00475F6E /* SKActionView.swift in Sources */,
 				8917B1B01D5A13DE000CE1C4 /* SKPhotoBrowserDelegate.swift in Sources */,
 				D2265CCF1F799C75009256CC /* UIApplication+UIWindow.swift in Sources */,
