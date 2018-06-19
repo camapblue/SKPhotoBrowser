@@ -218,9 +218,7 @@ open class SKZoomingScrollView: UIScrollView {
         }
         
         if let image = photo.underlyingImage, photo != nil {
-            // image
-            imageView.fadeImage(withAnimationDuration: SKPhotoBrowserOptions.fadeAnimationDuration,
-                                andImage: image)
+            imageView.image = image
             imageView.clipsToBounds = true
             
             var imageViewFrame: CGRect = .zero
@@ -229,7 +227,7 @@ open class SKZoomingScrollView: UIScrollView {
             // check photo size
             let photoWidth = image.size.width
             let photoHeight = image.size.height
-        
+            
             // image smaller than the device screen
             if photoWidth < SKMesurement.screenWidth && photoHeight < SKMesurement.screenHeight {
                 imageViewFrame.size = image.size
@@ -249,7 +247,7 @@ open class SKZoomingScrollView: UIScrollView {
             
             imageView.contentMode = .scaleAspectFit
             imageView.frame = imageViewFrame
-
+            
             contentSize = imageViewFrame.size
             setMaxMinZoomScalesForCurrentBounds()
 		} else {
