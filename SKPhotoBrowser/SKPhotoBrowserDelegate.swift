@@ -81,5 +81,10 @@ import Foundation
      Allows  the delegate to create its own caption view
      */
     @objc optional func captionViewForPhotoAtIndex(index: Int) -> SKCaptionView?
+    
+    /**
+     Hanlde single tap on image
+     */
+    @objc optional func singleTapOnImage()
 }
 

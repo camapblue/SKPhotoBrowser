@@ -131,6 +131,10 @@ extension FromLocalViewController: SKPhotoBrowserDelegate {
     func viewForPhoto(_ browser: SKPhotoBrowser, index: Int) -> UIView? {
         return collectionView.cellForItem(at: IndexPath(item: index, section: 0))
     }
+    
+    func singleTapOnImage() {
+        print("Single Tap On Image")
+    }
 }
 
 // MARK: - private

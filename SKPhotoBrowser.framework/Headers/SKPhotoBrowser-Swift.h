@@ -304,6 +304,8 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser14SKPhotoBrowser")
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
+- (void)scrollViewWillBeginDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
 
 
@@ -386,6 +388,11 @@ SWIFT_PROTOCOL("_TtP14SKPhotoBrowser22SKPhotoBrowserDelegate_")
 - (void)controlsVisibilityToggled:(SKPhotoBrowser * _Nonnull)browser hidden:(BOOL)hidden;
 /// Allows  the delegate to create its own caption view
 - (SKCaptionView * _Nullable)captionViewForPhotoAtIndexWithIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
+/// Scrollview delegate
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
+- (void)scrollViewWillBeginDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
 
 

@@ -324,6 +324,7 @@ public extension SKPhotoBrowser {
         let hidden = !areControlsHidden()
         setControlsHidden(hidden, animated: true, permanent: false)
         delegate?.controlsVisibilityToggled?(self, hidden: areControlsHidden())
+        delegate?.singleTapOnImage?()
     }
     
     func areControlsHidden() -> Bool {
@@ -360,7 +361,7 @@ public extension SKPhotoBrowser {
             present(activityViewController, animated: true, completion: nil)
         } else {
             activityViewController.modalPresentationStyle = .popover
-            let popover: UIPopoverPresentationController! = activityViewController.popoverPresentationController
+//            let popover: UIPopoverPresentationController! = activityViewController.popoverPresentationController
 //            popover.barButtonItem = toolbar.toolActionButton
             present(activityViewController, animated: true, completion: nil)
         }
