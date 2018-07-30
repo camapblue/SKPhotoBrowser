@@ -60,7 +60,7 @@ extension FromLocalViewController {
         }
         
         cell.exampleImageView.image = UIImage(named: "image\((indexPath as NSIndexPath).row).jpg")
-//        cell.exampleImageView.contentMode = .ScaleAspectFill
+        
         return cell
     }
 }
@@ -70,7 +70,6 @@ extension FromLocalViewController {
     @objc(collectionView:didSelectItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         images.append(getCustomView())
-        print("IMAGES = \(images.count)")
 
         browser = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.row)
         browser!.delegate = self
@@ -78,8 +77,6 @@ extension FromLocalViewController {
             deadline: DispatchTime.now() + Double(Int64(0.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { [weak self] in
                     self?.browser?.supportRightToLeft()
         })
-        
-//        browser.updateCloseButton(UIImage(named: "image1.jpg")!)
         
         present(browser!, animated: true, completion: {})
     }

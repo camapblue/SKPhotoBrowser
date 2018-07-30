@@ -641,6 +641,12 @@ extension SKPhotoBrowser: UIScrollViewDelegate {
         
         let currentIndex = pagingScrollView.contentOffset.x / pagingScrollView.frame.size.width
         delegate?.didScrollToIndex?(self, index: Int(currentIndex))
+        
+        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+            delegate?.didScrollDirection?(isLeft: true)
+        } else {
+            delegate?.didScrollDirection?(isLeft: false)
+        }
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {

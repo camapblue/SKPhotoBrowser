@@ -86,5 +86,10 @@ import Foundation
      Hanlde single tap on image
      */
     @objc optional func singleTapOnImage()
+    
+    /**
+     Hanlde direction of scrollview
+     */
+    @objc optional func didScrollDirection(isLeft: Bool) -> Void
 }
 
