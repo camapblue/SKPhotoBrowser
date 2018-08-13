@@ -88,8 +88,8 @@ import Foundation
     @objc optional func singleTapOnImage()
     
     /**
-     Hanlde direction of scrollview
+     Hanlde direction of scrollview and index
      */
-    @objc optional func didScrollDirection(isLeft: Bool)
+    @objc optional func didScrollDirection(isLeft: Bool, index: Int)
 }
 

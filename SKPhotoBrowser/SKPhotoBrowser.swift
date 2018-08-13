@@ -636,17 +636,22 @@ extension SKPhotoBrowser: UIScrollViewDelegate {
         }
     }
     
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate { scrollViewDidEndDecelerating(scrollView) }
+    }
+    
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         hideControlsAfterDelay()
         
         let currentIndex = pagingScrollView.contentOffset.x / pagingScrollView.frame.size.width
-        delegate?.didScrollToIndex?(self, index: Int(currentIndex))
         
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
-            delegate?.didScrollDirection?(isLeft: true)
+            delegate?.didScrollDirection?(isLeft: true, index: Int(currentIndex))
         } else {
-            delegate?.didScrollDirection?(isLeft: false)
+            delegate?.didScrollDirection?(isLeft: false, index: Int(currentIndex))
         }
+        
+        delegate?.didScrollToIndex?(self, index: Int(currentIndex))
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {

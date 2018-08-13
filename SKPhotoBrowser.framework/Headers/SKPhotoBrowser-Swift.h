@@ -306,6 +306,7 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser14SKPhotoBrowser")
 
 @interface SKPhotoBrowser (SWIFT_EXTENSION(SKPhotoBrowser)) <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView * _Nonnull)scrollView;
 @end
@@ -392,8 +393,8 @@ SWIFT_PROTOCOL("_TtP14SKPhotoBrowser22SKPhotoBrowserDelegate_")
 - (SKCaptionView * _Nullable)captionViewForPhotoAtIndexWithIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
 /// Hanlde single tap on image
 - (void)singleTapOnImage;
-/// Hanlde direction of scrollview
-- (void)didScrollDirectionWithIsLeft:(BOOL)isLeft;
+/// Hanlde direction of scrollview and index
+- (void)didScrollDirectionWithIsLeft:(BOOL)isLeft index:(NSInteger)index;
 @end
 
 
