@@ -12,7 +12,8 @@ import UIKit
 open class SKLocalPhoto: NSObject, SKPhotoProtocol {
     
     open var scrollEnable: Bool = true
-    open var underlyingImage: UIImage!
+    open var underlyingImage: UIImage?
+    open var underlyingGifImage: FLAnimatedImage?
     open var customView: UIView?
     open var photoURL: String!
     open var contentMode: UIViewContentMode = .scaleToFill
@@ -48,10 +49,12 @@ open class SKLocalPhoto: NSObject, SKPhotoProtocol {
             if FileManager.default.fileExists(atPath: photoURL) {
                 if let data = FileManager.default.contents(atPath: photoURL) {
                     self.loadUnderlyingImageComplete()
-                    if let image = UIImage(data: data) {
-                        self.underlyingImage = image
-                        self.loadUnderlyingImageComplete()
+                    if photoURL.contains("gif") {
+                        self.underlyingGifImage = FLAnimatedImage(animatedGIFData: data)
+                    } else {
+                        self.underlyingImage = UIImage(data: data)
                     }
+                    self.loadUnderlyingImageComplete()
                 }
             }
         }

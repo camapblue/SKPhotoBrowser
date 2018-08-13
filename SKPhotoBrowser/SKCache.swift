@@ -31,6 +31,22 @@ open class SKCache {
         
         cache.setImage(image, forKey: key)
     }
+    
+    open func imageGifForKey(_ key: String) -> FLAnimatedImage? {
+        guard let cache = imageCache as? SKImageCacheable else {
+            return nil
+        }
+        
+        return cache.imageGifForKey(key)
+    }
+    
+    open func setGifImage(_ image: FLAnimatedImage, forKey key: String) {
+        guard let cache = imageCache as? SKImageCacheable else {
+            return
+        }
+        
+        cache.setGifImage(image, forKey: key)
+    }
 
     open func removeImageForKey(_ key: String) {
         guard let cache = imageCache as? SKImageCacheable else {
@@ -58,6 +74,17 @@ open class SKCache {
         }
         return nil
     }
+    
+    open func imageGifForRequest(_ request: URLRequest) -> FLAnimatedImage? {
+        guard let cache = imageCache as? SKRequestResponseCacheable else {
+            return nil
+        }
+        
+        if let response = cache.cachedResponseForRequest(request) {
+            return FLAnimatedImage(animatedGIFData: response.data)
+        }
+        return nil
+    }
 
     open func setImageData(_ data: Data, response: URLResponse, request: URLRequest?) {
         guard let cache = imageCache as? SKRequestResponseCacheable, let request = request else {
@@ -80,6 +107,14 @@ class SKDefaultImageCache: SKImageCacheable {
     }
 
     func setImage(_ image: UIImage, forKey key: String) {
+        cache.setObject(image, forKey: key as AnyObject)
+    }
+    
+    func imageGifForKey(_ key: String) -> FLAnimatedImage? {
+        return cache.object(forKey: key as AnyObject) as? FLAnimatedImage
+    }
+    
+    func setGifImage(_ image: FLAnimatedImage, forKey key: String) {
         cache.setObject(image, forKey: key as AnyObject)
     }
 

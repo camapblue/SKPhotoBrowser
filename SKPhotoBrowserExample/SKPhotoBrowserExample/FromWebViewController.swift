@@ -11,19 +11,11 @@ import SKPhotoBrowser
 import SDWebImage
 
 class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: FLAnimatedImageView!
     var images = [SKPhotoProtocol]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        SKCache.sharedCache.imageCache = CustomImageCache()
-        let url = URL(string: "https://placehold.jp/1500x1500.png")
-        let complated: SDWebImageCompletionBlock = { (image, error, cacheType, imageURL) -> Void in
-            guard let url = imageURL?.absoluteString else { return }
-            SKCache.sharedCache.setImage(image!, forKey: url)
-        }
-        imageView.sd_setImage(with: url, completed: complated)
     }
     
     @IBAction func pushButton(_ sender: AnyObject) {
@@ -62,7 +54,7 @@ private extension FromWebViewController {
     func createWebPhotos() -> [SKPhotoProtocol] {
         return (0..<10).map { (i: Int) -> SKPhotoProtocol in
 //            let photo = SKPhoto.photoWithImageURL("https://placehold.jp/150\(i)x150\(i).png", holder: UIImage(named: "image0.jpg")!)
-            let photo = SKPhoto.photoWithImageURL("https://images.unsplash.com/photo-1491977345698-16775008d007?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=41d67822924e1567e72f5168431585a8")
+            let photo = SKPhoto.photoWithImageURL("https://media0.giphy.com/media/13gvXfEVlxQjDO/giphy.gif")
             photo.caption = caption[i%10]
             photo.shouldCachePhotoURLImage = true
             return photo
@@ -70,26 +62,3 @@ private extension FromWebViewController {
     }
 }
 
-class CustomImageCache: SKImageCacheable {
-    var cache: SDImageCache
-    
-    init() {
-        let cache = SDImageCache(namespace: "com.suzuki.custom.cache")
-        self.cache = cache!
-    }
-
-    func imageForKey(_ key: String) -> UIImage? {
-        guard let image = cache.imageFromDiskCache(forKey: key) else { return nil }
-        
-        return image
-    }
-
-    func setImage(_ image: UIImage, forKey key: String) {
-        cache.store(image, forKey: key)
-    }
-
-    func removeImageForKey(_ key: String) {
-    }
-    
-    func removeAllImages() {}
-}

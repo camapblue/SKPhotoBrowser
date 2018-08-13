@@ -11,7 +11,8 @@ import UIKit
 @objc public protocol SKPhotoProtocol: NSObjectProtocol {
     var index: Int { get set }
     var scrollEnable: Bool { get set }
-    var underlyingImage: UIImage! { get }
+    var underlyingImage: UIImage? { get }
+    var underlyingGifImage: FLAnimatedImage? { get }
     var customView: UIView? { get }
     var caption: String? { get }
     var contentMode: UIViewContentMode { get set }
@@ -23,7 +24,8 @@ import UIKit
 open class SKPhoto: NSObject, SKPhotoProtocol {
     open var index: Int = 0
     open var scrollEnable: Bool = true
-    open var underlyingImage: UIImage!
+    open var underlyingImage: UIImage?
+    open var underlyingGifImage: FLAnimatedImage?
     open var customView: UIView?
     open var caption: String?
     open var contentMode: UIViewContentMode = .scaleAspectFill
@@ -58,20 +60,27 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
             return
         }
         
+        let isGif = photoURL.contains("gif") == true
+        
         if SKCache.sharedCache.imageCache is SKRequestResponseCacheable {
             let request = URLRequest(url: URL(string: photoURL)!)
-            if let img = SKCache.sharedCache.imageForRequest(request) {
-                underlyingImage = img
+            if isGif {
+                underlyingGifImage = SKCache.sharedCache.imageGifForRequest(request)
+            } else {
+                underlyingImage = SKCache.sharedCache.imageForRequest(request)
             }
         } else {
-            if let img = SKCache.sharedCache.imageForKey(photoURL) {
-                underlyingImage = img
+            if isGif {
+                underlyingGifImage = SKCache.sharedCache.imageGifForKey(photoURL)
+            } else {
+                underlyingImage = SKCache.sharedCache.imageForKey(photoURL)
             }
         }
     }
     
     open func loadUnderlyingImageAndNotify() {
         guard photoURL != nil, let URL = URL(string: photoURL) else { return }
+        var isGif = photoURL.contains("gif") ==  true
         
         // Fetch Image
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -92,11 +101,20 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                         if SKCache.sharedCache.imageCache is SKRequestResponseCacheable {
                             SKCache.sharedCache.setImageData(data, response: response, request: task?.originalRequest)
                         } else {
-                            SKCache.sharedCache.setImage(image, forKey: self.photoURL)
+                            if isGif {
+                                SKCache.sharedCache.setGifImage(FLAnimatedImage(animatedGIFData: data),
+                                                                forKey: self.photoURL)
+                            } else {
+                                SKCache.sharedCache.setImage(image, forKey: self.photoURL)
+                            }
                         }
                     }
                     DispatchQueue.main.async {
-                        self.underlyingImage = image
+                        if isGif {
+                            self.underlyingGifImage = FLAnimatedImage(animatedGIFData: data)
+                        } else {
+                            self.underlyingImage = image
+                        }
                         self.loadUnderlyingImageComplete()
                     }
                 }

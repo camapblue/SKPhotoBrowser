@@ -90,6 +90,6 @@ import Foundation
     /**
      Hanlde direction of scrollview
      */
-    @objc optional func didScrollDirection(isLeft: Bool) -> Void
+    @objc optional func didScrollDirection(isLeft: Bool)
 }
 

@@ -175,7 +175,7 @@ open class SKPhotoBrowser: UIViewController {
                 return
             }
             
-            if photo.underlyingImage != nil {
+            if photo.underlyingImage != nil || photo.underlyingGifImage != nil {
                 page.displayImage(complete: true)
                 self.loadAdjacentPhotosIfNecessary(photo)
             } else if photo.customView != nil {

@@ -50,6 +50,10 @@
 		A64B89361CB04222000071B9 /* SKPhotoBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B89351CB04222000071B9 /* SKPhotoBrowserTests.swift */; };
 		A64B89381CB04222000071B9 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5301BC791280060A053 /* SKPhotoBrowser.framework */; };
 		D2265CCF1F799C75009256CC /* UIApplication+UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2265CCE1F799C75009256CC /* UIApplication+UIWindow.swift */; };
+		FC41059D2121388F00D375B6 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4105992121388E00D375B6 /* FLAnimatedImage.m */; };
+		FC41059E2121388F00D375B6 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */; };
+		FC41059F2121388F00D375B6 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = FC41059B2121388E00D375B6 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC4105A02121388F00D375B6 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,10 @@
 		A64B89351CB04222000071B9 /* SKPhotoBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserTests.swift; sourceTree = "<group>"; };
 		A64B89371CB04222000071B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2265CCE1F799C75009256CC /* UIApplication+UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+UIWindow.swift"; sourceTree = "<group>"; };
+		FC4105992121388E00D375B6 /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
+		FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		FC41059B2121388E00D375B6 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
+		FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +157,7 @@
 		8909B5321BC791280060A053 /* SKPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				8909B5351BC791280060A053 /* Info.plist */,
 				7643F4B31FE8CE7A00475F6E /* SKActionView.swift */,
 				89D0BA461D5994A8002A811B /* SKAnimator.swift */,
 				8917B1B31D5A14B0000CE1C4 /* SKButtons.swift */,
@@ -164,14 +173,13 @@
 				89C24A831D657AFE005F09A9 /* SKPagingScrollView.swift */,
 				8909B53F1BC791510060A053 /* SKPhoto.swift */,
 				8909B5411BC791510060A053 /* SKPhotoBrowser.swift */,
-				89C24A811D657AD1005F09A9 /* SKPhotoBrowserOptions.swift */,
-				8909B5331BC791280060A053 /* SKPhotoBrowser.h */,
 				8917B1AF1D5A13DE000CE1C4 /* SKPhotoBrowserDelegate.swift */,
+				89C24A811D657AD1005F09A9 /* SKPhotoBrowserOptions.swift */,
 				7643F4B81FEA4FCF00475F6E /* SKToolbar.swift */,
 				8909B5421BC791510060A053 /* SKZoomingScrollView.swift */,
-				8909B5351BC791280060A053 /* Info.plist */,
 				210E53EB1C986D1C008DD5E3 /* extensions */,
-				8909B54C1BC7916E0060A053 /* SKPhotoBrowser.bundle */,
+				FC410594212132A700D375B6 /* supporting files */,
+				FC4105972121388E00D375B6 /* vendors */,
 			);
 			path = SKPhotoBrowser;
 			sourceTree = "<group>";
@@ -186,6 +194,34 @@
 			path = SKPhotoBrowserTests;
 			sourceTree = "<group>";
 		};
+		FC410594212132A700D375B6 /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				8909B5331BC791280060A053 /* SKPhotoBrowser.h */,
+				8909B54C1BC7916E0060A053 /* SKPhotoBrowser.bundle */,
+			);
+			path = "supporting files";
+			sourceTree = "<group>";
+		};
+		FC4105972121388E00D375B6 /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+				FC4105982121388E00D375B6 /* FLAnimatedImage */,
+			);
+			path = vendors;
+			sourceTree = "<group>";
+		};
+		FC4105982121388E00D375B6 /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				FC41059B2121388E00D375B6 /* FLAnimatedImage.h */,
+				FC4105992121388E00D375B6 /* FLAnimatedImage.m */,
+				FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */,
+				FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */,
+			);
+			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -194,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8909B5341BC791280060A053 /* SKPhotoBrowser.h in Headers */,
+				FC41059F2121388F00D375B6 /* FLAnimatedImage.h in Headers */,
+				FC4105A02121388F00D375B6 /* FLAnimatedImageView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +282,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = suzuki_keishi;
 				TargetAttributes = {
 					48E3BDB920CFCB9B0077E407 = {
@@ -343,12 +381,14 @@
 				7643F4B61FE9F42F00475F6E /* SKPaginationView.swift in Sources */,
 				48F6662620D38F16008E0A02 /* UIImageView.swift in Sources */,
 				7643F4B41FE8CE7A00475F6E /* SKActionView.swift in Sources */,
+				FC41059E2121388F00D375B6 /* FLAnimatedImageView.m in Sources */,
 				8917B1B01D5A13DE000CE1C4 /* SKPhotoBrowserDelegate.swift in Sources */,
 				D2265CCF1F799C75009256CC /* UIApplication+UIWindow.swift in Sources */,
 				89D0BA491D59966B002A811B /* SKMesurement.swift in Sources */,
 				8909B5471BC791510060A053 /* SKPhoto.swift in Sources */,
 				8909B5461BC791510060A053 /* SKIndicatorView.swift in Sources */,
 				8917B1B41D5A14B0000CE1C4 /* SKButtons.swift in Sources */,
+				FC41059D2121388F00D375B6 /* FLAnimatedImage.m in Sources */,
 				89C24A821D657AD1005F09A9 /* SKPhotoBrowserOptions.swift in Sources */,
 				48E3BDD920D11CC80077E407 /* UIImageView+Size.swift in Sources */,
 				26C97AD51D0EB6870039F6CB /* SKCache.swift in Sources */,
@@ -407,12 +447,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -445,6 +487,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -463,12 +506,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -494,6 +539,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -517,6 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keishi.suzuki.SKPhotoBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -539,6 +586,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.keishi.suzuki.SKPhotoBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
