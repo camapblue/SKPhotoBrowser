@@ -13,7 +13,7 @@ import UIKit
     func handleImageViewDoubleTap(_ touchPoint: CGPoint)
 }
 
-class SKDetectingImageView: FLAnimatedImageView {
+class SKDetectingImageView: SKAnimatedImageView {
     weak var delegate: SKDetectingImageViewDelegate?
     
     required init?(coder aDecoder: NSCoder) {

@@ -13,7 +13,7 @@ class CustomView: UIView, SKPhotoProtocol {
     open var index: Int = 0
     open var scrollEnable: Bool = false
     open var underlyingImage: UIImage?
-    open var underlyingGifImage: FLAnimatedImage?
+    open var underlyingGifImage: SKAnimatedImage?
     open var customView: UIView?
     open var caption: String?
     open var shouldCachePhotoURLImage: Bool = false

@@ -198,14 +198,14 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser13SKCaptionView")
 
 
 @class UIImage;
-@class FLAnimatedImage;
+@class SKAnimatedImage;
 
 SWIFT_PROTOCOL("_TtP14SKPhotoBrowser15SKPhotoProtocol_")
 @protocol SKPhotoProtocol <NSObject>
 @property (nonatomic) NSInteger index;
 @property (nonatomic) BOOL scrollEnable;
 @property (nonatomic, readonly, strong) UIImage * _Nullable underlyingImage;
-@property (nonatomic, readonly, strong) FLAnimatedImage * _Nullable underlyingGifImage;
+@property (nonatomic, readonly, strong) SKAnimatedImage * _Nullable underlyingGifImage;
 @property (nonatomic, readonly, strong) UIView * _Nullable customView;
 @property (nonatomic, readonly, copy) NSString * _Nullable caption;
 @property (nonatomic) UIViewContentMode contentMode;
@@ -218,7 +218,7 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser12SKLocalPhoto")
 @interface SKLocalPhoto : NSObject <SKPhotoProtocol>
 @property (nonatomic) BOOL scrollEnable;
 @property (nonatomic, strong) UIImage * _Nullable underlyingImage;
-@property (nonatomic, strong) FLAnimatedImage * _Nullable underlyingGifImage;
+@property (nonatomic, strong) SKAnimatedImage * _Nullable underlyingGifImage;
 @property (nonatomic, strong) UIView * _Nullable customView;
 @property (nonatomic, copy) NSString * _Null_unspecified photoURL SWIFT_DEPRECATED_OBJC("Swift property 'SKLocalPhoto.photoURL' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic) UIViewContentMode contentMode;
@@ -240,7 +240,7 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser7SKPhoto")
 @property (nonatomic) NSInteger index;
 @property (nonatomic) BOOL scrollEnable;
 @property (nonatomic, strong) UIImage * _Nullable underlyingImage;
-@property (nonatomic, strong) FLAnimatedImage * _Nullable underlyingGifImage;
+@property (nonatomic, strong) SKAnimatedImage * _Nullable underlyingGifImage;
 @property (nonatomic, strong) UIView * _Nullable customView;
 @property (nonatomic, copy) NSString * _Nullable caption;
 @property (nonatomic) UIViewContentMode contentMode;

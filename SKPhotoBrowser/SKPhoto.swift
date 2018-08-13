@@ -12,7 +12,7 @@ import UIKit
     var index: Int { get set }
     var scrollEnable: Bool { get set }
     var underlyingImage: UIImage? { get }
-    var underlyingGifImage: FLAnimatedImage? { get }
+    var underlyingGifImage: SKAnimatedImage? { get }
     var customView: UIView? { get }
     var caption: String? { get }
     var contentMode: UIViewContentMode { get set }
@@ -25,7 +25,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
     open var index: Int = 0
     open var scrollEnable: Bool = true
     open var underlyingImage: UIImage?
-    open var underlyingGifImage: FLAnimatedImage?
+    open var underlyingGifImage: SKAnimatedImage?
     open var customView: UIView?
     open var caption: String?
     open var contentMode: UIViewContentMode = .scaleAspectFill
@@ -102,7 +102,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                             SKCache.sharedCache.setImageData(data, response: response, request: task?.originalRequest)
                         } else {
                             if isGif {
-                                SKCache.sharedCache.setGifImage(FLAnimatedImage(animatedGIFData: data),
+                                SKCache.sharedCache.setGifImage(SKAnimatedImage(animatedGIFData: data),
                                                                 forKey: self.photoURL)
                             } else {
                                 SKCache.sharedCache.setImage(image, forKey: self.photoURL)
@@ -111,7 +111,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                     }
                     DispatchQueue.main.async {
                         if isGif {
-                            self.underlyingGifImage = FLAnimatedImage(animatedGIFData: data)
+                            self.underlyingGifImage = SKAnimatedImage(animatedGIFData: data)
                         } else {
                             self.underlyingImage = image
                         }

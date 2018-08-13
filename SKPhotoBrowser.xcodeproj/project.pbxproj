@@ -50,10 +50,10 @@
 		A64B89361CB04222000071B9 /* SKPhotoBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64B89351CB04222000071B9 /* SKPhotoBrowserTests.swift */; };
 		A64B89381CB04222000071B9 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5301BC791280060A053 /* SKPhotoBrowser.framework */; };
 		D2265CCF1F799C75009256CC /* UIApplication+UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2265CCE1F799C75009256CC /* UIApplication+UIWindow.swift */; };
-		FC41059D2121388F00D375B6 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4105992121388E00D375B6 /* FLAnimatedImage.m */; };
-		FC41059E2121388F00D375B6 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */; };
-		FC41059F2121388F00D375B6 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = FC41059B2121388E00D375B6 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC4105A02121388F00D375B6 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC4105AE21216FAB00D375B6 /* SKAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4105AA21216FAB00D375B6 /* SKAnimatedImage.m */; };
+		FC4105AF21216FAB00D375B6 /* SKAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4105AB21216FAB00D375B6 /* SKAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC4105B021216FAB00D375B6 /* SKAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4105AC21216FAB00D375B6 /* SKAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC4105B121216FAB00D375B6 /* SKAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4105AD21216FAB00D375B6 /* SKAnimatedImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +99,10 @@
 		A64B89351CB04222000071B9 /* SKPhotoBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserTests.swift; sourceTree = "<group>"; };
 		A64B89371CB04222000071B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2265CCE1F799C75009256CC /* UIApplication+UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+UIWindow.swift"; sourceTree = "<group>"; };
-		FC4105992121388E00D375B6 /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
-		FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
-		FC41059B2121388E00D375B6 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
-		FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		FC4105AA21216FAB00D375B6 /* SKAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAnimatedImage.m; sourceTree = "<group>"; };
+		FC4105AB21216FAB00D375B6 /* SKAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAnimatedImageView.h; sourceTree = "<group>"; };
+		FC4105AC21216FAB00D375B6 /* SKAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAnimatedImage.h; sourceTree = "<group>"; };
+		FC4105AD21216FAB00D375B6 /* SKAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAnimatedImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,20 +206,20 @@
 		FC4105972121388E00D375B6 /* vendors */ = {
 			isa = PBXGroup;
 			children = (
-				FC4105982121388E00D375B6 /* FLAnimatedImage */,
+				FC4105A921216FAB00D375B6 /* SKAnimatedImage */,
 			);
 			path = vendors;
 			sourceTree = "<group>";
 		};
-		FC4105982121388E00D375B6 /* FLAnimatedImage */ = {
+		FC4105A921216FAB00D375B6 /* SKAnimatedImage */ = {
 			isa = PBXGroup;
 			children = (
-				FC41059B2121388E00D375B6 /* FLAnimatedImage.h */,
-				FC4105992121388E00D375B6 /* FLAnimatedImage.m */,
-				FC41059C2121388E00D375B6 /* FLAnimatedImageView.h */,
-				FC41059A2121388E00D375B6 /* FLAnimatedImageView.m */,
+				FC4105AC21216FAB00D375B6 /* SKAnimatedImage.h */,
+				FC4105AA21216FAB00D375B6 /* SKAnimatedImage.m */,
+				FC4105AB21216FAB00D375B6 /* SKAnimatedImageView.h */,
+				FC4105AD21216FAB00D375B6 /* SKAnimatedImageView.m */,
 			);
-			path = FLAnimatedImage;
+			path = SKAnimatedImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,9 +229,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4105AF21216FAB00D375B6 /* SKAnimatedImageView.h in Headers */,
 				8909B5341BC791280060A053 /* SKPhotoBrowser.h in Headers */,
-				FC41059F2121388F00D375B6 /* FLAnimatedImage.h in Headers */,
-				FC4105A02121388F00D375B6 /* FLAnimatedImageView.h in Headers */,
+				FC4105B021216FAB00D375B6 /* SKAnimatedImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,21 +381,21 @@
 				7643F4B61FE9F42F00475F6E /* SKPaginationView.swift in Sources */,
 				48F6662620D38F16008E0A02 /* UIImageView.swift in Sources */,
 				7643F4B41FE8CE7A00475F6E /* SKActionView.swift in Sources */,
-				FC41059E2121388F00D375B6 /* FLAnimatedImageView.m in Sources */,
 				8917B1B01D5A13DE000CE1C4 /* SKPhotoBrowserDelegate.swift in Sources */,
 				D2265CCF1F799C75009256CC /* UIApplication+UIWindow.swift in Sources */,
 				89D0BA491D59966B002A811B /* SKMesurement.swift in Sources */,
 				8909B5471BC791510060A053 /* SKPhoto.swift in Sources */,
 				8909B5461BC791510060A053 /* SKIndicatorView.swift in Sources */,
 				8917B1B41D5A14B0000CE1C4 /* SKButtons.swift in Sources */,
-				FC41059D2121388F00D375B6 /* FLAnimatedImage.m in Sources */,
 				89C24A821D657AD1005F09A9 /* SKPhotoBrowserOptions.swift in Sources */,
 				48E3BDD920D11CC80077E407 /* UIImageView+Size.swift in Sources */,
 				26C97AD51D0EB6870039F6CB /* SKCache.swift in Sources */,
 				210E53EF1C986D57008DD5E3 /* UIImage+Rotation.swift in Sources */,
 				8909B5431BC791510060A053 /* SKCaptionView.swift in Sources */,
 				8909B5491BC791510060A053 /* SKPhotoBrowser.swift in Sources */,
+				FC4105B121216FAB00D375B6 /* SKAnimatedImageView.m in Sources */,
 				8909B5451BC791510060A053 /* SKDetectingView.swift in Sources */,
+				FC4105AE21216FAB00D375B6 /* SKAnimatedImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

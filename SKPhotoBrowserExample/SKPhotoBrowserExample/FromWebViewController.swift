@@ -11,7 +11,7 @@ import SKPhotoBrowser
 import SDWebImage
 
 class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
-    @IBOutlet weak var imageView: FLAnimatedImageView!
+    @IBOutlet weak var imageView: SKAnimatedImageView!
     var images = [SKPhotoProtocol]()
     
     override func viewDidLoad() {

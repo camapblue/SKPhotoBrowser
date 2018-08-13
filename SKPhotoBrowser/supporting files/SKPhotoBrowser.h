@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FLAnimatedImage.h"
-#import "FLAnimatedImageView.h"
+#import "SKAnimatedImage.h"
+#import "SKAnimatedImageView.h"
 
 //! Project version number for SKPhotoBrowser.
 FOUNDATION_EXPORT double SKPhotoBrowserVersionNumber;
