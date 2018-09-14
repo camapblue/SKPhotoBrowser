@@ -17,6 +17,9 @@ open class SKPhotoBrowser: UIViewController {
     open var activityItemProvider: UIActivityItemProvider?
     open var photos: [SKPhotoProtocol] = []
     open var indicatorImages: [UIImage]?
+    open var scrollView: UIScrollView {
+        return pagingScrollView
+    }
     
     internal lazy var pagingScrollView: SKPagingScrollView = SKPagingScrollView(frame: self.view.frame, browser: self,
                                                                                 indicatorImages: indicatorImages)
@@ -621,6 +624,8 @@ extension SKPhotoBrowser: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isViewActive else { return }
         guard !isPerformingLayout else { return }
+        
+        delegate?.didScroll?(withScrollView: scrollView)
         
         // tile page
         pagingScrollView.tilePages()

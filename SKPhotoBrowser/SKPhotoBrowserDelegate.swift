@@ -91,5 +91,10 @@ import Foundation
      Hanlde direction of scrollview and index
      */
     @objc optional func didScrollDirection(isLeft: Bool, index: Int)
+    
+    /**
+     Hanlde scrollview did scroll
+     */
+    @objc optional func didScroll(withScrollView scrollView: UIScrollView)
 }
 

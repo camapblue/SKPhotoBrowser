@@ -261,6 +261,7 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser7SKPhoto")
 @end
 
 @class UIActivityItemProvider;
+@class UIScrollView;
 @protocol SKPhotoBrowserDelegate;
 @class NSBundle;
 
@@ -270,6 +271,7 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser14SKPhotoBrowser")
 @property (nonatomic, strong) UIActivityItemProvider * _Nullable activityItemProvider SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.activityItemProvider' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic, copy) NSArray<id <SKPhotoProtocol>> * _Nonnull photos SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.photos' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic, copy) NSArray<UIImage *> * _Nullable indicatorImages SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.indicatorImages' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) UIScrollView * _Nonnull scrollView SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.scrollView' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic, weak) id <SKPhotoBrowserDelegate> _Nullable delegate SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.delegate' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic, copy) NSString * _Nonnull cancelTitle SWIFT_DEPRECATED_OBJC("Swift property 'SKPhotoBrowser.cancelTitle' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -302,7 +304,6 @@ SWIFT_CLASS("_TtC14SKPhotoBrowser14SKPhotoBrowser")
 
 
 
-@class UIScrollView;
 
 @interface SKPhotoBrowser (SWIFT_EXTENSION(SKPhotoBrowser)) <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
@@ -395,6 +396,8 @@ SWIFT_PROTOCOL("_TtP14SKPhotoBrowser22SKPhotoBrowserDelegate_")
 - (void)singleTapOnImage;
 /// Hanlde direction of scrollview and index
 - (void)didScrollDirectionWithIsLeft:(BOOL)isLeft index:(NSInteger)index;
+/// Hanlde scrollview did scroll
+- (void)didScrollWithScrollView:(UIScrollView * _Nonnull)scrollView;
 @end
 
 
