@@ -93,8 +93,8 @@ import Foundation
     @objc optional func didScrollDirection(isLeft: Bool, index: Int)
     
     /**
-     Hanlde scrollview did scroll
+     Hanlde pan gesture with offet Y
      */
-    @objc optional func didScroll(withScrollView scrollView: UIScrollView)
+    @objc optional func didPanGestureRecognized(withOffsetY offsetY: CGFloat)
 }
 

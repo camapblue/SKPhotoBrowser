@@ -17,9 +17,6 @@ open class SKPhotoBrowser: UIViewController {
     open var activityItemProvider: UIActivityItemProvider?
     open var photos: [SKPhotoProtocol] = []
     open var indicatorImages: [UIImage]?
-    open var scrollView: UIScrollView {
-        return pagingScrollView
-    }
     
     internal lazy var pagingScrollView: SKPagingScrollView = SKPagingScrollView(frame: self.view.frame, browser: self,
                                                                                 indicatorImages: indicatorImages)
@@ -463,6 +460,7 @@ internal extension SKPhotoBrowser {
             : -(zoomingScrollView.center.y - viewHalfHeight)) / viewHalfHeight
         
         view.backgroundColor = bgColor.withAlphaComponent(max(0.7, offset))
+        delegate?.didPanGestureRecognized?(withOffsetY: offset)
         
         // gesture end
         if sender.state == .ended {
@@ -476,7 +474,8 @@ internal extension SKPhotoBrowser {
                 // Continue Showing View
                 setNeedsStatusBarAppearanceUpdate()
                 view.backgroundColor = bgColor
-
+                delegate?.didPanGestureRecognized?(withOffsetY: 1.0)
+                
                 let velocityY: CGFloat = CGFloat(0.35) * sender.velocity(in: self.view).y
                 let finalX: CGFloat = firstX
                 let finalY: CGFloat = viewHalfHeight
@@ -624,8 +623,6 @@ extension SKPhotoBrowser: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isViewActive else { return }
         guard !isPerformingLayout else { return }
-        
-        delegate?.didScroll?(withScrollView: scrollView)
         
         // tile page
         pagingScrollView.tilePages()

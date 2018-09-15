@@ -132,6 +132,10 @@ extension FromLocalViewController: SKPhotoBrowserDelegate {
     func singleTapOnImage() {
         print("Single Tap On Image")
     }
+    
+    func didPanGestureRecognized(withOffsetY offsetY: CGFloat) {
+        print("Pan gesture offset: \(offsetY)")
+    }
 }
 
 // MARK: - private
