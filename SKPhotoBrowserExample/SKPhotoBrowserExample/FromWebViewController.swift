@@ -19,6 +19,7 @@ class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
     }
     
     @IBAction func pushButton(_ sender: AnyObject) {
+        SKCache.sharedCache.imageCache = FullScreenImageCache()
         let browser = SKPhotoBrowser(photos: createWebPhotos(), initialPageIndex: 0)
         browser.initializePageIndex(0)
         browser.indicatorImages = loadingIndicator()
@@ -52,13 +53,45 @@ extension FromWebViewController {
 
 private extension FromWebViewController {
     func createWebPhotos() -> [SKPhotoProtocol] {
-        return (0..<10).map { (i: Int) -> SKPhotoProtocol in
-//            let photo = SKPhoto.photoWithImageURL("https://placehold.jp/150\(i)x150\(i).png", holder: UIImage(named: "image0.jpg")!)
-            let photo = SKPhoto.photoWithImageURL("https://media0.giphy.com/media/13gvXfEVlxQjDO/giphy.gif")
-            photo.caption = caption[i%10]
+        return ["https://media0.giphy.com/media/13gvXfEVlxQjDO/giphy.gif", "https://images.pexels.com/photos/87840/daisy-pollen-flower-nature-87840.jpeg?cs=srgb&dl=plant-flower-macro-87840.jpg&fm=jpg",
+         "https://thoughtcatalog.files.wordpress.com/2018/06/flower-puns.jpg?w=1140&resize=1140,761&quality=95&strip=all&crop=1",
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_RUPdnqlOWJGrfNSgziTDNSTU0vSg62qkuKUa7FvNNzbR4B_AtA",
+         "https://media.architecturaldigest.com/photos/57a263a6b6c434ab487bc2cb/master/pass/01.jpg",
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXXy_4owokvieyYn5TrsR8zsrBdiIdW9MF7YY9_lKPkD5GLATI0w",
+         "https://jooinn.com/images/fresh-roses-5.jpg", "https://www.flowerbowl.com.au/images/showcase/homepage/flowerbowl-26_preview.jpg"].map({ string -> SKPhotoProtocol in
+            let photo = SKPhoto.photoWithImageURL(string)
             photo.shouldCachePhotoURLImage = true
             return photo
-        }
+         })
     }
 }
 
+class FullScreenImageCache: SKImageCacheable {
+    
+    private let cache = SDImageCache.shared()
+    
+    func imageForKey(_ key: String) -> UIImage? {
+        guard let image = cache.imageFromDiskCache(forKey: key) else { return nil }
+        
+        return image
+    }
+    
+    func setImage(_ image: UIImage, forKey key: String) {
+        cache.store(image, forKey: key, toDisk: true)
+    }
+    
+    func imageGifForKey(_ key: String) -> SKAnimatedImage? {
+        guard let data = cache.diskImageData(forKey: key) else { return nil }
+        
+        return SKAnimatedImage(animatedGIFData: data)
+    }
+    
+    func setGifImage(_ image: SKAnimatedImage, forKey key: String) {
+        cache.storeImageData(toDisk: image.data, forKey: key)
+    }
+    
+    func removeImageForKey(_ key: String) {}
+    
+    func removeAllImages() {}
+    
+}
