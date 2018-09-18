@@ -17,12 +17,11 @@ open class SKZoomingScrollView: UIScrollView {
             if photo != nil {
                 if photo.customView != nil {
                     displayCustomView(complete: false)
-                } else if photo.underlyingImage != nil {
+                } else if photo.underlyingImage != nil || photo.underlyingGifImage != nil {
                     displayImage(complete: true)
+                } else {
+                    displayImage(complete: false)
                 }
-            }
-            if photo != nil {
-                displayImage(complete: false)
             }
             
             if isRightToLeft {
