@@ -201,7 +201,7 @@ open class SKZoomingScrollView: UIScrollView {
     }
     
     // MARK: - image
-    open func displayImage(complete flag: Bool) {
+    open func displayImage(complete flag: Bool, andScreenSize size: CGSize? = nil) {
         // reset scale
         maximumZoomScale = 1
         minimumZoomScale = 1
@@ -218,10 +218,10 @@ open class SKZoomingScrollView: UIScrollView {
         
         if let image = photo.underlyingImage, photo != nil {
             imageView.image = image
-            calculate(fromImage: image)
+            calculate(fromImage: image, andScreenSize: size)
         } else if let gifImage = photo.underlyingGifImage, photo != nil {
             imageView.animatedImage = gifImage
-            calculate(fromImage: imageView.currentFrame)
+            calculate(fromImage: imageView.currentFrame, andScreenSize: size)
         } else {
 			// change contentSize will reset contentOffset, so only set the contentsize zero when the image is nil
 			contentSize = CGSize.zero
@@ -293,7 +293,7 @@ open class SKZoomingScrollView: UIScrollView {
         }
     }
     
-    private func calculate(fromImage image: UIImage) {
+    private func calculate(fromImage image: UIImage, andScreenSize size: CGSize? = nil) {
         imageView.clipsToBounds = true
         
         var imageViewFrame: CGRect = .zero
@@ -303,19 +303,23 @@ open class SKZoomingScrollView: UIScrollView {
         let photoWidth = image.size.width
         let photoHeight = image.size.height
         
+        // screen size
+        let screenWidth = size?.width ?? SKMesurement.screenWidth
+        let screenHeight = size?.height ?? SKMesurement.screenHeight
+        
         // image smaller than the device screen
-        if photoWidth < SKMesurement.screenWidth && photoHeight < SKMesurement.screenHeight {
+        if photoWidth < screenWidth && photoHeight < screenHeight {
             imageViewFrame.size = image.size
-        } else if photoWidth > SKMesurement.screenWidth && photoHeight < SKMesurement.screenHeight {
-            let screenSize = CGSize(width: SKMesurement.screenWidth, height: photoHeight)
+        } else if photoWidth > screenWidth && photoHeight < screenHeight {
+            let screenSize = CGSize(width: screenWidth, height: photoHeight)
             imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
                                          height: imageView.aspectFitSize(fromSize: screenSize).height)
-        } else if photoHeight > SKMesurement.screenHeight && photoWidth < SKMesurement.screenWidth {
-            let screenSize = CGSize(width: photoWidth, height: SKMesurement.screenHeight)
+        } else if photoHeight > screenHeight && photoWidth < screenWidth {
+            let screenSize = CGSize(width: photoWidth, height: screenHeight)
             imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
                                          height: imageView.aspectFitSize(fromSize: screenSize).height)
-        } else if photoWidth > SKMesurement.screenWidth && photoHeight > SKMesurement.screenHeight {
-            let screenSize = CGSize(width: SKMesurement.screenWidth, height: SKMesurement.screenHeight)
+        } else if photoWidth > screenWidth && photoHeight > screenHeight {
+            let screenSize = CGSize(width: screenWidth, height: screenHeight)
             imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
                                          height: imageView.aspectFitSize(fromSize: screenSize).height)
         }

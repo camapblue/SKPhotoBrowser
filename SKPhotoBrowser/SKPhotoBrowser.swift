@@ -164,6 +164,18 @@ open class SKPhotoBrowser: UIViewController {
         return !SKPhotoBrowserOptions.displayStatusbar
     }
     
+    override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        // check photo is loaded first
+        guard let page = self.pagingScrollView.pageDisplayedAtIndex(currentPageIndex),
+            let photo = page.photo else { return }
+        if photo.underlyingImage != nil || photo.underlyingGifImage != nil {
+            page.displayImage(complete: true, andScreenSize: size)
+            self.loadAdjacentPhotosIfNecessary(photo)
+        }
+    }
+    
     // MARK: - Notification
     @objc open func handleSKPhotoLoadingDidEndNotification(_ notification: Notification) {
         guard let photo = notification.object as? SKPhotoProtocol else {
