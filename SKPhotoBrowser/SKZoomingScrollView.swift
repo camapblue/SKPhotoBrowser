@@ -318,7 +318,7 @@ open class SKZoomingScrollView: UIScrollView {
             let screenSize = CGSize(width: photoWidth, height: screenHeight)
             imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
                                          height: imageView.aspectFitSize(fromSize: screenSize).height)
-        } else if photoWidth > screenWidth && photoHeight > screenHeight {
+        } else if photoWidth >= screenWidth && photoHeight >= screenHeight {
             let screenSize = CGSize(width: screenWidth, height: screenHeight)
             imageViewFrame.size = CGSize(width: imageView.aspectFitSize(fromSize: screenSize).width,
                                          height: imageView.aspectFitSize(fromSize: screenSize).height)
