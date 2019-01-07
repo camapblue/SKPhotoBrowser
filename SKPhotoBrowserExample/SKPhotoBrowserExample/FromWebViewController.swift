@@ -54,7 +54,11 @@ extension FromWebViewController {
 
 private extension FromWebViewController {
     func createWebPhotos() -> [SKPhotoProtocol] {
-        return ["https://staticmbc-a.akamaihd.net/image/upload/v1541660634/2018/11/08/xumipum7bbcopeyt96ts.gif","https://staticmbc-a.akamaihd.net/image/upload/v1537844599/2018/09/25/fwjxz2sziojmebhlaams.gif","https://media0.giphy.com/media/13gvXfEVlxQjDO/giphy.gif", "https://images.pexels.com/photos/87840/daisy-pollen-flower-nature-87840.jpeg?cs=srgb&dl=plant-flower-macro-87840.jpg&fm=jpg",
+        return ["https://staticmbc-a.akamaihd.net/image/upload/v1543594099/2018/11/30/wlaoz7oqjszduvik4v9i.jpg",
+                "https://staticmbc-a.akamaihd.net/image/upload/v1541660634/2018/11/08/xumipum7bbcopeyt96ts.gif",
+                "https://staticmbc-a.akamaihd.net/image/upload/v1537844599/2018/09/25/fwjxz2sziojmebhlaams.gif",
+                "https://media0.giphy.com/media/13gvXfEVlxQjDO/giphy.gif",
+                "https://images.pexels.com/photos/87840/daisy-pollen-flower-nature-87840.jpeg?cs=srgb&dl=plant-flower-macro-87840.jpg&fm=jpg",
          "https://thoughtcatalog.files.wordpress.com/2018/06/flower-puns.jpg?w=1140&resize=1140,761&quality=95&strip=all&crop=1",
          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_RUPdnqlOWJGrfNSgziTDNSTU0vSg62qkuKUa7FvNNzbR4B_AtA",
          "https://media.architecturaldigest.com/photos/57a263a6b6c434ab487bc2cb/master/pass/01.jpg",

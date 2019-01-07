@@ -11,6 +11,12 @@ import Foundation
 @objc public protocol SKPhotoBrowserDelegate {
     
     /**
+     Tells the delegate that the browser begin dragging scrollView
+     
+     */
+    @objc optional func scrollViewWillBeginDragging()
+    
+    /**
      Tells the delegate that the browser started displaying a new photo
      
      - Parameter index: the index of the new photo

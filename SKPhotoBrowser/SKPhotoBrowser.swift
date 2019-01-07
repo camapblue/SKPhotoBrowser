@@ -629,6 +629,11 @@ private extension SKPhotoBrowser {
 // MARK: - UIScrollView Delegate
 
 extension SKPhotoBrowser: UIScrollViewDelegate {
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.scrollViewWillBeginDragging?()
+    }
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard isViewActive else { return }
         guard !isPerformingLayout else { return }
