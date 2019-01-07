@@ -74,7 +74,6 @@ open class SKPhotoBrowser: UIViewController {
     public convenience init(originImage: UIImage, photos: [SKPhotoProtocol], animatedFromView: UIView) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
-        self.photos.forEach { $0.checkCache() }
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
     }
@@ -82,7 +81,6 @@ open class SKPhotoBrowser: UIViewController {
     public convenience init(photos: [SKPhotoProtocol], initialPageIndex: Int) {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
-        self.photos.forEach { $0.checkCache() }
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
         animator.senderOriginImage = photos[currentPageIndex].underlyingImage
         animator.senderViewForAnimation = photos[currentPageIndex] as? UIView
@@ -92,7 +90,6 @@ open class SKPhotoBrowser: UIViewController {
         self.init(nibName: nil, bundle: nil)
         self.photos = photos
         self.indicatorImages = indicatorImages
-        self.photos.forEach { $0.checkCache() }
         self.currentPageIndex = min(initialPageIndex, photos.count - 1)
         animator.senderOriginImage = photos[currentPageIndex].underlyingImage
         animator.senderViewForAnimation = photos[currentPageIndex] as? UIView
@@ -496,7 +493,7 @@ internal extension SKPhotoBrowser {
                 
                 UIView.beginAnimations(nil, context: nil)
                 UIView.setAnimationDuration(animationDuration)
-                UIView.setAnimationCurve(UIViewAnimationCurve.easeIn)
+                UIView.setAnimationCurve(UIView.AnimationCurve.easeIn)
                 zoomingScrollView.center = CGPoint(x: finalX, y: finalY)
                 UIView.commitAnimations()
             }

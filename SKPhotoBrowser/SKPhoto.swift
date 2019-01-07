@@ -15,9 +15,9 @@ import UIKit
     var underlyingGifImage: SKAnimatedImage? { get }
     var customView: UIView? { get }
     var caption: String? { get }
-    var contentMode: UIViewContentMode { get set }
+    var contentMode: UIView.ContentMode { get set }
     func loadUnderlyingImageAndNotify()
-    func checkCache()
+    func checkCache() -> Bool
 }
 
 // MARK: - SKPhoto
@@ -28,7 +28,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
     open var underlyingGifImage: SKAnimatedImage?
     open var customView: UIView?
     open var caption: String?
-    open var contentMode: UIViewContentMode = .scaleAspectFill
+    open var contentMode: UIView.ContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = false
     open var photoURL: String!
 
@@ -52,12 +52,12 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
         underlyingImage = holder
     }
     
-    open func checkCache() {
+    open func checkCache() -> Bool {
         guard let photoURL = photoURL else {
-            return
+            return false
         }
         guard shouldCachePhotoURLImage else {
-            return
+            return false
         }
         
         let isGif = photoURL.contains("gif") == true
@@ -76,11 +76,26 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                 underlyingImage = SKCache.sharedCache.imageForKey(photoURL)
             }
         }
+        
+        if isGif, underlyingGifImage != nil {
+            self.loadUnderlyingImageComplete()
+            return true
+        }
+        
+        if !isGif, underlyingImage != nil {
+            self.loadUnderlyingImageComplete()
+            return true
+        }
+        
+        return false
     }
     
     open func loadUnderlyingImageAndNotify() {
         guard photoURL != nil, let URL = URL(string: photoURL) else { return }
         var isGif = photoURL.contains("gif") ==  true
+        
+        // Get image from cache before load
+        if checkCache() { return }
         
         // Fetch Image
         let session = URLSession(configuration: URLSessionConfiguration.default)

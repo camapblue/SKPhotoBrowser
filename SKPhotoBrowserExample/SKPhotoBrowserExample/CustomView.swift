@@ -36,7 +36,9 @@ class CustomView: UIView, SKPhotoProtocol {
         self.customView = self
     }
     
-    open func checkCache() { }
+    open func checkCache() -> Bool {
+        return false
+    }
     
     open func loadUnderlyingImageAndNotify() {
         self.backgroundColor = UIColor.orange

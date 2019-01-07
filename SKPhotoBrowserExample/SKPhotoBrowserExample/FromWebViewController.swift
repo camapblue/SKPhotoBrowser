@@ -20,7 +20,8 @@ class FromWebViewController: UIViewController, SKPhotoBrowserDelegate {
     
     @IBAction func pushButton(_ sender: AnyObject) {
         SKCache.sharedCache.imageCache = FullScreenImageCache()
-        let browser = SKPhotoBrowser(photos: createWebPhotos(), initialPageIndex: 0)
+        let browser = SKPhotoBrowser(photos: [SKPhoto.photoWithImageURL("www.google.com")], initialPageIndex: 0)
+        browser.photos = createWebPhotos()
         browser.initializePageIndex(0)
         browser.indicatorImages = loadingIndicator()
         browser.delegate = self

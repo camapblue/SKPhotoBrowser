@@ -16,7 +16,7 @@ open class SKLocalPhoto: NSObject, SKPhotoProtocol {
     open var underlyingGifImage: SKAnimatedImage?
     open var customView: UIView?
     open var photoURL: String!
-    open var contentMode: UIViewContentMode = .scaleToFill
+    open var contentMode: UIView.ContentMode = .scaleToFill
     open var shouldCachePhotoURLImage: Bool = false
     open var caption: String?
     open var index: Int = 0
@@ -36,7 +36,9 @@ open class SKLocalPhoto: NSObject, SKPhotoProtocol {
         underlyingImage = holder
     }
     
-    open func checkCache() {}
+    open func checkCache() -> Bool {
+        return false
+    }
     
     open func loadUnderlyingImageAndNotify() {
         
