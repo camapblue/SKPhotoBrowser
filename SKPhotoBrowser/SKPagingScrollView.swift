@@ -168,9 +168,18 @@ class SKPagingScrollView: UIScrollView {
         let pageFrame = frameForPageAtIndex(index)
         let captionSize = captionView.sizeThatFits(CGSize(width: pageFrame.size.width, height: 0))
         let paginationFrame = browser?.paginationView.frame ?? .zero
+        let toolbarFrame = browser?.toolbar.frame ?? .zero
+        
+        var frameSet = CGRect.zero
+        switch SKCaptionOptions.captionLocation {
+        case .basic:
+            frameSet = paginationFrame
+        case .bottom:
+            frameSet = toolbarFrame
+        }
         
         return CGRect(x: pageFrame.origin.x,
-                      y: paginationFrame.minY - captionSize.height,
+                      y: pageFrame.size.height - captionSize.height - frameSet.height,
                       width: pageFrame.size.width, height: captionSize.height)
     }
     
@@ -224,9 +233,9 @@ private extension SKPagingScrollView {
     }
     
     func createCaptionView(_ index: Int) -> SKCaptionView? {
-//        if let delegate = self.browser?.delegate {
-//            return delegate.captionViewForPhotoAtIndex?(index: index)
-//        }
+        if let delegate = self.browser?.delegate, let ownCaptionView = delegate.captionViewForPhotoAtIndex?(index: index) {
+            return ownCaptionView
+        }
         guard let photo = browser?.photoAtIndex(index), photo.caption != nil else {
             return nil
         }

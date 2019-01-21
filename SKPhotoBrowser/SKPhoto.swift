@@ -98,7 +98,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
         if checkCache() { return }
         
         // Fetch Image
-        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let session = URLSession(configuration: SKPhotoBrowserOptions.sessionConfiguration)
             var task: URLSessionTask?
             task = session.dataTask(with: URL, completionHandler: { [weak self] (data, response, error) in
                 guard let `self` = self else { return }

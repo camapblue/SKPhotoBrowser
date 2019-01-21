@@ -299,7 +299,7 @@ static NSHashTable *allAnimatedImagesWeak;
                     CFRelease(frameImageRef);
                 } else {
                     skippedFrameCount++;
-                    SKLog(SKLogLevelInfo, @"Dropping frame %zu because failed to `CGImageSourceCreateImageAtIndex` with image source %@", i, _imageSource);
+                    SKLog(SKLogLevelInfo, @"Dropping frame %zu because failed to `CGImageSourceCreateImageAtIndex` with image source %@", i, self->_imageSource);
                 }
             }
         }
